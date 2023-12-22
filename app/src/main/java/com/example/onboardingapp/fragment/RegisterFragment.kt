@@ -40,56 +40,56 @@ class RegisterFragment : BottomSheetDialogFragment() {
             registerButton.setOnClickListener {
                 when {
                     nameTxt.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Name esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
 
                     nameTxt.text.toString().length > 10 -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Name ocupa ser maximo 10 caracteres",
                         Toast.LENGTH_LONG
                     ).show()
 
                     emailTxt.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Email esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
 
                     !(android.util.Patterns.EMAIL_ADDRESS.matcher(emailTxt.text.toString())
                         .matches()) -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Email es invalido",
                         Toast.LENGTH_LONG
                     ).show()
 
                     passwordText.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Password esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
 
                     passwordText.text.toString().length < 5 || passwordText.text.toString().length > 10 -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Password ocupa ser de minimo 5 y maximo 10 caracteres",
                         Toast.LENGTH_LONG
                     ).show()
 
                     confirmPasswordText.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Confirm password esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
 
                     confirmPasswordText.text.toString().length < 5 || passwordText.text.toString().length > 10 -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Confirm password ocupa ser de minimo 5 y maximo 10 caracteres",
                         Toast.LENGTH_LONG
                     ).show()
 
                     passwordText.text.toString() != confirmPasswordText.text.toString() -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "Las contraseñas son diferentes",
                         Toast.LENGTH_LONG
                     ).show()

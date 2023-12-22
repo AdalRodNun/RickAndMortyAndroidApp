@@ -1,6 +1,5 @@
 package com.example.onboardingapp.activity
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -14,7 +13,6 @@ import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var context: Context
     private val repository = RoomRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +27,6 @@ class LoginActivity : AppCompatActivity() {
 
     @Suppress("DEPRECATION")
     private fun init() {
-        context = this
 
         val packageInfo = packageManager.getPackageInfo(packageName, 0)
         binding.versionText.text = "v ${packageInfo.versionName}"
@@ -42,26 +39,26 @@ class LoginActivity : AppCompatActivity() {
             loginButton.setOnClickListener {
                 when {
                     emailTxt.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        this@LoginActivity,
                         "El campo Email esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
 
                     !(android.util.Patterns.EMAIL_ADDRESS.matcher(emailTxt.text.toString())
                         .matches()) -> Toast.makeText(
-                        context,
+                        this@LoginActivity,
                         "El campo Email es invalido",
                         Toast.LENGTH_LONG
                     ).show()
 
                     passwordText.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        this@LoginActivity,
                         "El campo Password esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
 
                     passwordText.text.toString().length < 5 || passwordText.text.toString().length > 10 -> Toast.makeText(
-                        context,
+                        this@LoginActivity,
                         "El campo Password ocupa ser de minimo 5 y maximo 10 caracteres",
                         Toast.LENGTH_LONG
                     ).show()
@@ -83,9 +80,9 @@ class LoginActivity : AppCompatActivity() {
             val user = repository.findUserByEmail(binding.emailTxt.text.toString())
 
             if (user == null || user.password != binding.passwordText.text.toString()) {
-                Toast.makeText(context, "Correo o contraseña incorrectos", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity, "Correo o contraseña incorrectos", Toast.LENGTH_LONG).show()
             } else {
-                val intent = Intent(context, ContainerActivity::class.java)
+                val intent = Intent(this@LoginActivity, ContainerActivity::class.java)
                 finish()
                 startActivity(intent)
             }

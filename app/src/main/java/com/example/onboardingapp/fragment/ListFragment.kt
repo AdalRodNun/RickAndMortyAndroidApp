@@ -51,7 +51,7 @@ class ListFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        binding.recylerService.layoutManager = LinearLayoutManager(context)
+        binding.recylerService.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun onItemSelected(person: Person) {

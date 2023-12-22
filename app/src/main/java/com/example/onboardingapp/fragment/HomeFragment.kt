@@ -78,43 +78,43 @@ class HomeFragment : Fragment() {
             addButton.setOnClickListener {
                 when {
                     nameTxt.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Name esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
 
                     nameTxt.text.toString().length > 20 -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Name no puede ser mayor a 20 caracteres",
                         Toast.LENGTH_LONG
                     ).show()
 
                     birthdayTxt.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Birthday esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
 
                     addressTxt.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Address esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
 
                     phoneTxt.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Phone number esta vacio",
                         Toast.LENGTH_LONG
                     ).show()
 
                     phoneTxt.text.toString().isEmpty() -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo Name no puede ser mayor a 10 caracteres",
                         Toast.LENGTH_LONG
                     ).show()
 
                     picture == null -> Toast.makeText(
-                        context,
+                        requireContext(),
                         "El campo fotografia esta vacio",
                         Toast.LENGTH_LONG
                     ).show()

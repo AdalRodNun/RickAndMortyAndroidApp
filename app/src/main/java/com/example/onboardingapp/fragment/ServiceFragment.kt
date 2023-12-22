@@ -40,7 +40,7 @@ class ServiceFragment : Fragment() {
         binding.apply {
             searchButton.setOnClickListener {
                 if (searchTxt.text.toString().isEmpty()) {
-                    Toast.makeText(context, "El campo Buscar esta vacio", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "El campo Buscar esta vacio", Toast.LENGTH_LONG).show()
                 } else {
                     viewModel.getCharactersByName(searchTxt.text.toString().lowercase())
                 }
@@ -51,7 +51,7 @@ class ServiceFragment : Fragment() {
     @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     private fun setObservers() {
         viewModel.onError.observe(viewLifecycleOwner) {
-            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         }
 
         viewModel.getCharactersResponse.observe(viewLifecycleOwner) {
@@ -65,7 +65,7 @@ class ServiceFragment : Fragment() {
 
     private fun initRecyclerView() {
         adapter = CharactersListAdapter(charactersList)
-        binding.recylerService.layoutManager = LinearLayoutManager(context)
+        binding.recylerService.layoutManager = LinearLayoutManager(requireContext())
         binding.recylerService.adapter = adapter
     }
 }
