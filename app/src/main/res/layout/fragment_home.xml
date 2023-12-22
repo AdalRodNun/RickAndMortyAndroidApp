@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.HomeFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_primary_variant"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="Home" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_home">
+
+            <ImageView
+                android:id="@+id/camera_button"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ic_photo" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:hint="Name"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/birthday_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:focusable="false"
+                android:hint="Birthday date"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:hint="Address"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:hint="Phone number"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hobbies_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Hobbies"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="4dp"
+                    android:text="Optional"
+                    android:textSize="11dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/add_button"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:enabled="false"
+                android:text="Add people"
+                android:textAllCaps="false"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

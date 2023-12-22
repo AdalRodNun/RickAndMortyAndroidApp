@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.RegisterFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/color_primary_variant"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="Register" />
+
+        <LinearLayout
+            android:id="@+id/container_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="60dp"
+            android:paddingTop="40dp"
+            android:paddingRight="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <TextView
+                android:id="@+id/register_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Register new account"
+                android:textSize="30sp" />
+
+            <LinearLayout
+                android:id="@+id/inputs_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="40dp"
+                android:paddingBottom="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/container_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:drawableEnd="@drawable/ic_pencil"
+                    android:hint="Name"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:drawableEnd="@drawable/ic_mail"
+                    android:hint="@string/email"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:drawableEnd="@drawable/ic_eye"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirm_password_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableEnd="@drawable/ic_eye"
+                    android:hint="Confirm password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
