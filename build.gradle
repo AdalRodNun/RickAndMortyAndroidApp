@@ -7,6 +7,6 @@ plugins {
 }
 sonar {
     properties {
-        property "sonar.projectKey", "OnBoardingApp"
+        property "sonar.projectKey", "Rick and Morty"
     }
 }

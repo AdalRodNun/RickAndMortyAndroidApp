@@ -8,7 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.onboardingapp"
+        applicationId "com.myapp.rickandmorty"
         minSdk 26
         targetSdk 33
         versionCode 2
