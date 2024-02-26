@@ -25,11 +25,10 @@ class LoginActivity : AppCompatActivity() {
         init()
     }
 
-    @Suppress("DEPRECATION")
     private fun init() {
 
         val packageInfo = packageManager.getPackageInfo(packageName, 0)
-        binding.versionText.text = "v ${packageInfo.versionName}"
+        binding.versionText.text = getString(R.string.version_param, packageInfo.versionName)
 
         setListeners()
     }

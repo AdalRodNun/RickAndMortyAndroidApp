@@ -28,29 +28,29 @@ class ContainerActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        showBottomNavigation()
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            manageBottomNavigation(item.itemId)
+        }
     }
 
-    private fun showBottomNavigation() {
-        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.ic_list -> {
-                    replaceFragment(ListFragment())
-                    true
-                }
-
-                R.id.ic_home -> {
-                    replaceFragment(HomeFragment())
-                    true
-                }
-
-                R.id.ic_service -> {
-                    replaceFragment(ServiceFragment())
-                    true
-                }
-
-                else -> false
+    private fun manageBottomNavigation(itemId: Int): Boolean {
+        return when (itemId) {
+            R.id.ic_list -> {
+                replaceFragment(ListFragment())
+                true
             }
+
+            R.id.ic_home -> {
+                replaceFragment(HomeFragment())
+                true
+            }
+
+            R.id.ic_service -> {
+                replaceFragment(ServiceFragment())
+                true
+            }
+
+            else -> false
         }
     }
 

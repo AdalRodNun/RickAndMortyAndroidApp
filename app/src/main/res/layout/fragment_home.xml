@@ -33,19 +33,21 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar_home">
 
             <ImageView
+
                 android:id="@+id/camera_button"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/ic_photo" />
+                android:src="@drawable/ic_photo"
+                android:contentDescription="@string/camera_icon" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name_txt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
@@ -56,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
                 android:focusable="false"
-                android:hint="Birthday date"
+                android:hint="@string/birthday_date"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
@@ -66,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
-                android:hint="Address"
+                android:hint="@string/address"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
@@ -76,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
-                android:hint="Phone number"
+                android:hint="@string/phone_number"
                 android:inputType="number"
                 android:singleLine="true"
                 android:textColor="@color/black"
@@ -91,7 +93,7 @@
                     android:id="@+id/hobbies_txt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Hobbies"
+                    android:hint="@string/hobbies"
                     android:singleLine="true"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -99,9 +101,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="4dp"
-                    android:text="Optional"
-                    android:textSize="11dp" />
+                    android:paddingHorizontal="4dp"
+                    android:text="@string/optional"
+                    android:textSize="11sp" />
 
             </LinearLayout>
 
@@ -112,7 +114,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:enabled="false"
-                android:text="Add people"
+                android:text="@string/add_people"
                 android:textAllCaps="false"
                 android:textSize="15sp" />
 

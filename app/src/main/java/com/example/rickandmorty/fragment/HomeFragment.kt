@@ -46,11 +46,15 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        init()
+
+        return binding.root
+    }
+
+    private fun init() {
         initTextWatcher()
         setObservers()
         setListeners()
-
-        return binding.root
     }
 
     private fun initTextWatcher() {
