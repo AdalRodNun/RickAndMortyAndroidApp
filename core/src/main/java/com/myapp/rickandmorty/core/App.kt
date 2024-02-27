@@ -3,14 +3,14 @@ package com.myapp.rickandmorty.core
 import android.app.Application
 import androidx.room.Room
 import com.myapp.rickandmorty.core.service.APIService.getAPIRetrofit
-import com.myapp.rickandmorty.core.room.AppDatabase
+import com.myapp.rickandmorty.core.room.RoomDatabase
 import com.myapp.rickandmorty.utils.Constants.ROOM_DATABASE_NAME
 import retrofit2.Retrofit
 
 class App : Application() {
 
     companion object {
-        lateinit var room: AppDatabase
+        lateinit var room: RoomDatabase
             private set
 
         lateinit var retrofit: Retrofit
@@ -21,7 +21,7 @@ class App : Application() {
         super.onCreate()
 
         room = Room
-            .databaseBuilder(this, AppDatabase::class.java, ROOM_DATABASE_NAME)
+            .databaseBuilder(this, RoomDatabase::class.java, ROOM_DATABASE_NAME)
             .build()
 
         retrofit = getAPIRetrofit()

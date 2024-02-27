@@ -15,7 +15,7 @@ import com.myapp.rickandmorty.core.room.models.User
     exportSchema = false
 )
 
-abstract class AppDatabase : RoomDatabase() {
+abstract class RoomDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun personDao(): PersonDao
 }
