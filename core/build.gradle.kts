@@ -1,11 +1,12 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "com.myapp.rickandmorty"
+    namespace = "com.myapp.rickandmorty.core"
     compileSdk = 33
 
     defaultConfig {
@@ -38,7 +39,17 @@ dependencies {
     implementation(Libraries.core)
     implementation(Libraries.appCompat)
 
+    implementation(Libraries.roomKtx)
+    implementation(Libraries.roomRuntime)
+    kapt(Libraries.roomCompiler)
+
+    implementation(Libraries.loggingInterceptor)
+    implementation(Libraries.retrofit)
+    implementation(Libraries.converterGson)
+
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)
     androidTestImplementation(Libraries.espressoCore)
+
+    implementation(project(":utils"))
 }

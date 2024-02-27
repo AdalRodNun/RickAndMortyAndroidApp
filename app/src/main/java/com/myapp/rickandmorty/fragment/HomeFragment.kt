@@ -19,8 +19,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.FragmentHomeBinding
-import com.myapp.rickandmorty.room.models.Person
-import com.myapp.rickandmorty.room.repository.RoomRepository
+import com.myapp.rickandmorty.core.room.models.Person
+import com.myapp.rickandmorty.repository.RoomRepository
 import com.myapp.rickandmorty.viewModel.HomeFragmentViewModel
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream

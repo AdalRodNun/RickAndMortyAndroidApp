@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-kapt")
 }
 
 @Suppress("UnstableApiUsage")
@@ -45,7 +44,6 @@ dependencies {
     // Room
     implementation(Libraries.roomRuntime)
     implementation(Libraries.roomKtx)
-    kapt(Libraries.roomCompiler)
 
     // Retrofit
     implementation(Libraries.loggingInterceptor)
@@ -72,4 +70,5 @@ dependencies {
 
     implementation(project(":utils"))
     implementation(project(":style"))
+    implementation(project(":core"))
 }

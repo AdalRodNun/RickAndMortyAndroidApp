@@ -1,4 +1,4 @@
-package com.myapp.rickandmorty.services
+package com.myapp.rickandmorty.core.service
 
 import com.myapp.rickandmorty.utils.Constants.BASE_URL
 import okhttp3.OkHttpClient
@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object API {
+object APIService {
 
     fun getAPIRetrofit(): Retrofit {
 

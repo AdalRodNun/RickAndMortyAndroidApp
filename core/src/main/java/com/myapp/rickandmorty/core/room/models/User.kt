@@ -1,4 +1,4 @@
-package com.myapp.rickandmorty.room.models
+package com.myapp.rickandmorty.core.room.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

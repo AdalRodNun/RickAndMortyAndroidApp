@@ -5,7 +5,7 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "com.myapp.rickandmorty"
+    namespace = "com.myapp.rickandmorty.utils"
     compileSdk = 33
 
     defaultConfig {

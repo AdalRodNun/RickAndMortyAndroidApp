@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.ActivityLoginBinding
 import com.myapp.rickandmorty.fragment.RegisterFragment
-import com.myapp.rickandmorty.room.repository.RoomRepository
+import com.myapp.rickandmorty.repository.RoomRepository
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {

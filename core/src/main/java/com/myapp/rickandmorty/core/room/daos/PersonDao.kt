@@ -1,10 +1,10 @@
-package com.myapp.rickandmorty.room.daos
+package com.myapp.rickandmorty.core.room.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.myapp.rickandmorty.room.models.Person
+import com.myapp.rickandmorty.core.room.models.Person
 
 @Dao
 interface PersonDao {

@@ -1,11 +1,11 @@
-package com.myapp.rickandmorty.room
+package com.myapp.rickandmorty.core.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.myapp.rickandmorty.room.daos.PersonDao
-import com.myapp.rickandmorty.room.daos.UserDao
-import com.myapp.rickandmorty.room.models.Person
-import com.myapp.rickandmorty.room.models.User
+import com.myapp.rickandmorty.core.room.daos.PersonDao
+import com.myapp.rickandmorty.core.room.daos.UserDao
+import com.myapp.rickandmorty.core.room.models.Person
+import com.myapp.rickandmorty.core.room.models.User
 
 @Database(
     entities = [
