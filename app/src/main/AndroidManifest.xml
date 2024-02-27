@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-            android:name="com.example.rickandmorty.App"
+            android:name="com.myapp.rickandmorty.App"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -17,10 +17,10 @@
             android:supportsRtl="true"
             android:theme="@style/MyTheme.DayNight">
             <activity
-                android:name="com.example.rickandmorty.activity.ContainerActivity"
+                android:name="com.myapp.rickandmorty.activity.ContainerActivity"
                 android:exported="true" />
             <activity
-                android:name="com.example.rickandmorty.activity.LoginActivity"
+                android:name="com.myapp.rickandmorty.activity.LoginActivity"
                 android:exported="true"
                 android:theme="@style/SplashTheme">
                 <intent-filter>
