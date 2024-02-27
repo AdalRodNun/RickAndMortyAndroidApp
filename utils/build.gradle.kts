@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
 }
 
+@Suppress("UnstableApiUsage")
 android {
     namespace = "com.myapp.rickandmorty"
     compileSdk = 33
