@@ -1,9 +1,28 @@
 <resources>
-    <string name="app_name">OnBoardingApp</string>
+    <string name="app_name">Rick and Morty</string>
+
+    <!--Login-->
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="version_param">v %1$s</string>
+
+    <!--Register-->
+    <string name="confirm_password">Confirm password</string>
+
+    <!--Fragment Home-->
+    <string name="name">Name</string>
+    <string name="birthday_date">Birthday date</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone number</string>
+    <string name="hobbies">Hobbies</string>
+    <string name="optional">Optional</string>
+    <string name="add_people">Add people</string>
+
+    <!--Fragment Service-->
+    <string name="search">Search</string>
+    <string name="camera_icon">Camera icon</string>
+    <string name="register_new_account">Register new account</string>
+
 </resources>
