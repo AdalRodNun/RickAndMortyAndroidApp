@@ -1,22 +1,3 @@
-import Libraries.activityKtx
-import Libraries.appCompat
-import Libraries.constraintLayout
-import Libraries.converterGson
-import Libraries.core
-import Libraries.espressoCore
-import Libraries.fragmentKtx
-import Libraries.gson
-import Libraries.junit
-import Libraries.junitTest
-import Libraries.liveData
-import Libraries.loggingInterceptor
-import Libraries.materialDesign
-import Libraries.retrofit
-import Libraries.roomCompiler
-import Libraries.roomKtx
-import Libraries.roomRuntime
-import Libraries.viewModel
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -61,32 +42,32 @@ android {
 dependencies {
 
     // Room
-    implementation(roomRuntime)
-    implementation(roomKtx)
-    kapt(roomCompiler)
+    implementation(Libraries.roomRuntime)
+    implementation(Libraries.roomKtx)
+    kapt(Libraries.roomCompiler)
 
     // Retrofit
-    implementation(loggingInterceptor)
-    implementation(retrofit)
-    implementation(converterGson)
-    implementation(gson)
+    implementation(Libraries.loggingInterceptor)
+    implementation(Libraries.retrofit)
+    implementation(Libraries.converterGson)
+    implementation(Libraries.gson)
 
-    implementation(core)
-    implementation(appCompat)
+    implementation(Libraries.core)
+    implementation(Libraries.appCompat)
 
-    implementation(materialDesign)
-    implementation(constraintLayout)
+    implementation(Libraries.materialDesign)
+    implementation(Libraries.constraintLayout)
 
     implementation("com.squareup.picasso:picasso:2.71828")
 
-    implementation(activityKtx)
-    implementation(fragmentKtx)
-    implementation(viewModel)
-    implementation(liveData)
+    implementation(Libraries.activityKtx)
+    implementation(Libraries.fragmentKtx)
+    implementation(Libraries.viewModel)
+    implementation(Libraries.liveData)
 
-    testImplementation(junit)
-    androidTestImplementation(junitTest)
-    androidTestImplementation(espressoCore)
+    testImplementation(Libraries.junit)
+    androidTestImplementation(Libraries.junitTest)
+    androidTestImplementation(Libraries.espressoCore)
 
     implementation(project(":utils"))
 }
