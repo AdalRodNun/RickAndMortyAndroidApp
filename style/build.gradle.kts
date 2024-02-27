@@ -4,8 +4,8 @@ plugins {
 }
 
 android {
-    namespace = "com.myapp.rickandmorty"
-    compileSdk = 33
+    namespace = "com.myapp.rickandmorty.style"
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 26
@@ -36,6 +36,7 @@ dependencies {
 
     implementation(Libraries.core)
     implementation(Libraries.appCompat)
+    implementation(Libraries.materialDesign)
 
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)

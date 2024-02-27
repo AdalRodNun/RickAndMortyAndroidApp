@@ -16,3 +16,4 @@ rootProject.name = "Rick and Morty"
 include(":app")
 include(":utils")
 include(":core")
+include(":style")

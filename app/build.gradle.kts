@@ -70,4 +70,5 @@ dependencies {
     androidTestImplementation(Libraries.espressoCore)
 
     implementation(project(":utils"))
+    implementation(project(":style"))
 }
