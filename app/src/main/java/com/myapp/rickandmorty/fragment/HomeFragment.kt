@@ -145,11 +145,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showDatePicker() {
-        val datePickerFgm =
-            DatePickerFragment(currentDay, currentMonth, currentYear) { day, month, year ->
-                onDateSelected(day, month, year)
-            }
-        datePickerFgm.show(parentFragmentManager, "datePickerFragment")
+
     }
 
     private fun onDateSelected(day: Int, month: Int, year: Int) {

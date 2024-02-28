@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
     private val repository = RoomRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Base_MyTheme)
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
