@@ -3,17 +3,16 @@ plugins {
     id("kotlin-android")
 }
 
-@Suppress("UnstableApiUsage")
 android {
     namespace = "com.myapp.rickandmorty"
-    compileSdk = 33
+    compileSdk = Configuration.compileSdkVersion
 
     defaultConfig {
         applicationId = "com.myapp.rickandmorty"
-        minSdk = 26
-        targetSdk = 33
-        versionCode = 2
-        versionName = "1.1.0"
+        minSdk = Configuration.minSdkVersion
+        targetSdk = Configuration.targetSdkVersion
+        versionCode = Configuration.versionCode
+        versionName = Configuration.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -51,24 +50,28 @@ dependencies {
     implementation(Libraries.converterGson)
     implementation(Libraries.gson)
 
+    // Core
     implementation(Libraries.core)
     implementation(Libraries.appCompat)
 
+    // Design
     implementation(Libraries.materialDesign)
     implementation(Libraries.constraintLayout)
+    implementation(Libraries.picasso)
 
-    implementation("com.squareup.picasso:picasso:2.71828")
-
+    // Architecture
     implementation(Libraries.activityKtx)
     implementation(Libraries.fragmentKtx)
     implementation(Libraries.viewModel)
     implementation(Libraries.liveData)
 
+    // Test
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)
     androidTestImplementation(Libraries.espressoCore)
 
-    implementation(project(":utils"))
-    implementation(project(":style"))
-    implementation(project(":core"))
+    // Modules
+    implementation(project(Modules.utilities))
+    implementation(project(Modules.core))
+    implementation(project(Modules.style))
 }

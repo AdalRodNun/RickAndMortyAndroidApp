@@ -3,13 +3,12 @@ plugins {
     id("kotlin-android")
 }
 
-@Suppress("UnstableApiUsage")
 android {
     namespace = "com.myapp.rickandmorty.utils"
-    compileSdk = 33
+    compileSdk = Configuration.compileSdkVersion
 
     defaultConfig {
-        minSdk = 26
+        minSdk = Configuration.minSdkVersion
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -35,8 +34,10 @@ android {
 
 dependencies {
 
+    // Core
     implementation(Libraries.appCompat)
 
+    // Testing
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)
     androidTestImplementation(Libraries.espressoCore)

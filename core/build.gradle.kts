@@ -1,16 +1,15 @@
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
     id("kotlin-kapt")
 }
 
-@Suppress("UnstableApiUsage")
 android {
     namespace = "com.myapp.rickandmorty.core"
-    compileSdk = 33
+    compileSdk = Configuration.compileSdkVersion
 
     defaultConfig {
-        minSdk = 26
+        minSdk = Configuration.minSdkVersion
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -36,20 +35,25 @@ android {
 
 dependencies {
 
+    // Core
     implementation(Libraries.core)
     implementation(Libraries.appCompat)
 
+    // Room
     implementation(Libraries.roomKtx)
     implementation(Libraries.roomRuntime)
     kapt(Libraries.roomCompiler)
 
+    // Retrofit
     implementation(Libraries.loggingInterceptor)
     implementation(Libraries.retrofit)
     implementation(Libraries.converterGson)
 
+    // Test
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)
     androidTestImplementation(Libraries.espressoCore)
 
-    implementation(project(":utils"))
+    // Modules
+    implementation(project(Modules.utilities))
 }

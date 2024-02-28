@@ -14,6 +14,7 @@ object Libraries {
     const val materialDesign = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+    const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 
     // Test
     const val junit = "junit:junit:${Versions.jUnit}"

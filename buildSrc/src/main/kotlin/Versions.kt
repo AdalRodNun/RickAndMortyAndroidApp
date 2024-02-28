@@ -14,6 +14,7 @@ object Versions {
     const val material = "1.8.0"
     const val constraintLayout = "2.1.4"
     const val lottie = "3.7.0"
+    const val picasso = "2.71828"
 
     // Test
     const val jUnit = "4.13.2"
