@@ -1,38 +1,18 @@
-import Libraries.activityKtx
-import Libraries.appCompat
-import Libraries.constraintLayout
-import Libraries.converterGson
-import Libraries.core
-import Libraries.espressoCore
-import Libraries.fragmentKtx
-import Libraries.gson
-import Libraries.junit
-import Libraries.junitTest
-import Libraries.liveData
-import Libraries.loggingInterceptor
-import Libraries.materialDesign
-import Libraries.retrofit
-import Libraries.roomCompiler
-import Libraries.roomKtx
-import Libraries.roomRuntime
-import Libraries.viewModel
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.myapp.rickandmorty"
-    compileSdk = 33
+    compileSdk = Configuration.compileSdkVersion
 
     defaultConfig {
         applicationId = "com.myapp.rickandmorty"
-        minSdk = 26
-        targetSdk = 33
-        versionCode = 2
-        versionName = "1.1.0"
+        minSdk = Configuration.minSdkVersion
+        targetSdk = Configuration.targetSdkVersion
+        versionCode = Configuration.versionCode
+        versionName = Configuration.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -61,32 +41,37 @@ android {
 dependencies {
 
     // Room
-    implementation(roomRuntime)
-    implementation(roomKtx)
-    kapt(roomCompiler)
+    implementation(Libraries.roomRuntime)
+    implementation(Libraries.roomKtx)
 
     // Retrofit
-    implementation(loggingInterceptor)
-    implementation(retrofit)
-    implementation(converterGson)
-    implementation(gson)
+    implementation(Libraries.loggingInterceptor)
+    implementation(Libraries.retrofit)
+    implementation(Libraries.converterGson)
+    implementation(Libraries.gson)
 
-    implementation(core)
-    implementation(appCompat)
+    // Core
+    implementation(Libraries.core)
+    implementation(Libraries.appCompat)
 
-    implementation(materialDesign)
-    implementation(constraintLayout)
+    // Design
+    implementation(Libraries.materialDesign)
+    implementation(Libraries.constraintLayout)
+    implementation(Libraries.picasso)
 
-    implementation("com.squareup.picasso:picasso:2.71828")
+    // Architecture
+    implementation(Libraries.activityKtx)
+    implementation(Libraries.fragmentKtx)
+    implementation(Libraries.viewModel)
+    implementation(Libraries.liveData)
 
-    implementation(activityKtx)
-    implementation(fragmentKtx)
-    implementation(viewModel)
-    implementation(liveData)
+    // Test
+    testImplementation(Libraries.junit)
+    androidTestImplementation(Libraries.junitTest)
+    androidTestImplementation(Libraries.espressoCore)
 
-    testImplementation(junit)
-    androidTestImplementation(junitTest)
-    androidTestImplementation(espressoCore)
-
-    implementation(project(":utils"))
+    // Modules
+    implementation(project(Modules.utilities))
+    implementation(project(Modules.core))
+    implementation(project(Modules.style))
 }

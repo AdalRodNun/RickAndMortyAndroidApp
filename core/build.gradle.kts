@@ -1,14 +1,15 @@
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.myapp.rickandmorty"
-    compileSdk = 33
+    namespace = "com.myapp.rickandmorty.core"
+    compileSdk = Configuration.compileSdkVersion
 
     defaultConfig {
-        minSdk = 26
+        minSdk = Configuration.minSdkVersion
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -18,8 +19,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -34,10 +35,25 @@ android {
 
 dependencies {
 
+    // Core
     implementation(Libraries.core)
     implementation(Libraries.appCompat)
 
+    // Room
+    implementation(Libraries.roomKtx)
+    implementation(Libraries.roomRuntime)
+    kapt(Libraries.roomCompiler)
+
+    // Retrofit
+    implementation(Libraries.loggingInterceptor)
+    implementation(Libraries.retrofit)
+    implementation(Libraries.converterGson)
+
+    // Test
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)
     androidTestImplementation(Libraries.espressoCore)
+
+    // Modules
+    implementation(project(Modules.utilities))
 }

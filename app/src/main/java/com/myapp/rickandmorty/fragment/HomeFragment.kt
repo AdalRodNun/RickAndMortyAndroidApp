@@ -19,8 +19,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.FragmentHomeBinding
-import com.myapp.rickandmorty.room.models.Person
-import com.myapp.rickandmorty.room.repository.RoomRepository
+import com.myapp.rickandmorty.core.room.models.Person
+import com.myapp.rickandmorty.repository.RoomRepository
 import com.myapp.rickandmorty.viewModel.HomeFragmentViewModel
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
@@ -145,11 +145,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showDatePicker() {
-        val datePickerFgm =
-            DatePickerFragment(currentDay, currentMonth, currentYear) { day, month, year ->
-                onDateSelected(day, month, year)
-            }
-        datePickerFgm.show(parentFragmentManager, "datePickerFragment")
+
     }
 
     private fun onDateSelected(day: Int, month: Int, year: Int) {

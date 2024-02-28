@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.myapp.rickandmorty.utils"
+    namespace = "com.myapp.rickandmorty.style"
     compileSdk = Configuration.compileSdkVersion
 
     defaultConfig {
@@ -35,9 +35,13 @@ android {
 dependencies {
 
     // Core
+    implementation(Libraries.core)
     implementation(Libraries.appCompat)
 
-    // Testing
+    // Design
+    implementation(Libraries.materialDesign)
+
+    // Test
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)
     androidTestImplementation(Libraries.espressoCore)

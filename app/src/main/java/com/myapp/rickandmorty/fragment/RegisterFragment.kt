@@ -10,8 +10,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.myapp.rickandmorty.databinding.FragmentRegisterBinding
-import com.myapp.rickandmorty.room.models.User
-import com.myapp.rickandmorty.room.repository.RoomRepository
+import com.myapp.rickandmorty.core.room.models.User
+import com.myapp.rickandmorty.repository.RoomRepository
 import kotlinx.coroutines.launch
 
 class RegisterFragment : BottomSheetDialogFragment() {

@@ -10,8 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myapp.rickandmorty.adapter.PersonsListAdapter
 import com.myapp.rickandmorty.databinding.FragmentListBinding
-import com.myapp.rickandmorty.room.models.Person
-import com.myapp.rickandmorty.room.repository.RoomRepository
+import com.myapp.rickandmorty.core.room.models.Person
+import com.myapp.rickandmorty.repository.RoomRepository
 import com.myapp.rickandmorty.viewModel.ListFragmentViewModel
 import kotlinx.coroutines.launch
 
