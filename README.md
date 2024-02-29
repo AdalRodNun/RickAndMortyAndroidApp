@@ -12,3 +12,4 @@ To implement:
   - Implement work manager
   - Implement proguard-rules
   - English and spanish
+  - Skeleton Content Loader
