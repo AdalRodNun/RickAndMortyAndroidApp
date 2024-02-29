@@ -1,4 +1,6 @@
-An ongoing app that consumes a rick and morty API.
+-Dependency Management
+
+An ongoing application that consumes a Rick and Morty API.
 
 To implement:
   -Clean architecture
