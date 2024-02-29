@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Rick and Morty</string>
+
+    <!--Login-->
+    <string name="login">Iniciar sesión</string>
+    <string name="register">Crear nueva cuenta</string>
+    <string name="email">Correo electronico</string>
+    <string name="password">Contraseña</string>
+    <string name="version_param">v %1$s</string>
+
+    <!--Register-->
+    <string name="confirm_password">Confirmar contraseña</string>
+
+    <!--Fragment Home-->
+    <string name="name">Nombre</string>
+    <string name="birthday_date">Cumpleaños</string>
+    <string name="address">Dirección</string>
+    <string name="phone_number">Numero telefonico</string>
+    <string name="hobbies">Pasatiempos</string>
+    <string name="optional">Opcional</string>
+    <string name="add_people">Añadir persona</string>
+
+    <!--Fragment Service-->
+    <string name="search">Buscar</string>
+    <string name="camera_icon">Icono de cámara</string>
+    <string name="register_new_account">Registrar nueva cuenta</string>
+</resources>
