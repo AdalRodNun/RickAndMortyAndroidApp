@@ -3,15 +3,22 @@
 <resources>
     <string name="app_name">Rick and Morty</string>
 
-    <!--Login-->
+    <!--LoginActivity-->
     <string name="login">Iniciar sesión</string>
     <string name="register">Crear nueva cuenta</string>
     <string name="email">Correo electronico</string>
     <string name="password">Contraseña</string>
-    <string name="version_param">v %1$s</string>
+    <string name="version_param">V. %1$s</string>
+    <string name="version">V. 1.0.0</string>
+    <string name="empty_email_error">Ingrese correo</string>
+    <string name="invalid_email_error">Correo invalido</string>
+    <string name="empty_password_error">Ingrese contraseña</string>
 
-    <!--Register-->
+    <!--RegisterFragment-->
     <string name="confirm_password">Confirmar contraseña</string>
+    <string name="password_requirements">*Debe tener 5 caracteres como mínimo</string>
+    <string name="passwords_match_error">Las contraseñas no coinciden</string>
+    <string name="password_long_error">La contraseña debe se mínimo de 5 caracteres</string>
 
     <!--Fragment Home-->
     <string name="name">Nombre</string>

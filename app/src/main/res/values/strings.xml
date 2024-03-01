@@ -5,13 +5,20 @@
 
     <!--Login-->
     <string name="login">Login</string>
-    <string name="register">Register</string>
+    <string name="register">Create new account</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="version_param">v %1$s</string>
+    <string name="version_param">V. %1$s</string>
+    <string name="version">V. 1.0.0</string>
+    <string name="empty_email_error">Email is empty</string>
+    <string name="invalid_email_error">Email is invalid</string>
+    <string name="empty_password_error">Password is empty</string>
 
     <!--Register-->
     <string name="confirm_password">Confirm password</string>
+    <string name="password_requirements">*Must be at least 5 characters long</string>
+    <string name="passwords_match_error">Passwords does not match</string>
+    <string name="password_long_error">Password must be at least 5 characters long</string>
 
     <!--Fragment Home-->
     <string name="name">Name</string>
