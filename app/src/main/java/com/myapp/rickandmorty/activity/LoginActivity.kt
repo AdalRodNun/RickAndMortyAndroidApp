@@ -8,10 +8,16 @@ import androidx.lifecycle.lifecycleScope
 import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.ActivityLoginBinding
 import com.myapp.rickandmorty.fragment.RegisterFragment
+import com.myapp.rickandmorty.fragment.RegisterFragment.Companion.TAG
 import com.myapp.rickandmorty.repository.RoomRepository
+import com.myapp.rickandmorty.utils.ExtendedFunctions.getPackageInfoCompat
+import com.myapp.rickandmorty.utils.Functions.isValidEmail
+import com.myapp.rickandmorty.utils.SimpleTextWatcher
 import kotlinx.coroutines.launch
 
+
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
     private val repository = RoomRepository()
 
@@ -26,59 +32,63 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun init() {
-
-        val packageInfo = packageManager.getPackageInfo(packageName, 0)
-        binding.versionText.text = getString(R.string.version_param, packageInfo.versionName)
-
         setListeners()
+        setVersion()
     }
 
-    private fun setListeners() {
-        binding.apply {
-            loginButton.setOnClickListener {
-                when {
-                    emailTxt.text.toString().isEmpty() -> Toast.makeText(
-                        this@LoginActivity,
-                        "El campo Email esta vacio",
-                        Toast.LENGTH_LONG
-                    ).show()
+    private fun setVersion() {
+        val packageInfo = packageManager.getPackageInfoCompat(packageName)
+        binding.tvVersion.text = getString(R.string.version_param, packageInfo.versionName)
+    }
 
-                    !(android.util.Patterns.EMAIL_ADDRESS.matcher(emailTxt.text.toString())
-                        .matches()) -> Toast.makeText(
-                        this@LoginActivity,
-                        "El campo Email es invalido",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    passwordText.text.toString().isEmpty() -> Toast.makeText(
-                        this@LoginActivity,
-                        "El campo Password esta vacio",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    passwordText.text.toString().length < 5 || passwordText.text.toString().length > 10 -> Toast.makeText(
-                        this@LoginActivity,
-                        "El campo Password ocupa ser de minimo 5 y maximo 10 caracteres",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    else -> {
-                        checkLogin()
-                    }
-                }
-            }
-
-            registerButton.setOnClickListener {
-                RegisterFragment().show(supportFragmentManager, "Register")
+    private fun setListeners() = with(binding) {
+        btLogin.setOnClickListener {
+            if (validateInputs()) {
+                checkLogin()
             }
         }
+
+        btRegister.setOnClickListener {
+            RegisterFragment().show(supportFragmentManager, TAG)
+        }
+
+        etEmail.addTextChangedListener(SimpleTextWatcher {
+            tilEmail.error = null
+        })
+
+        etPassword.addTextChangedListener(SimpleTextWatcher {
+            tilPassword.error = null
+        })
     }
 
+    private fun validateInputs(): Boolean = with(binding) {
+        val email = etEmail.text.toString()
+        val password = etPassword.text.toString()
+        var valid = true
+
+        if (email.isEmpty()) {
+            tilEmail.error = getString(R.string.empty_email_error)
+            valid = false
+
+        } else if (isValidEmail(email)) {
+            tilEmail.error = getString(R.string.invalid_email_error)
+            valid = false
+        }
+
+        if (password.isEmpty()) {
+            tilPassword.error = getString(R.string.empty_password_error)
+            valid = false
+        }
+
+        return valid
+    }
+
+    // TODO - Refactor to viewModel
     private fun checkLogin() {
         lifecycleScope.launch {
-            val user = repository.findUserByEmail(binding.emailTxt.text.toString())
+            val user = repository.findUserByEmail(binding.etEmail.text.toString())
 
-            if (user == null || user.password != binding.passwordText.text.toString()) {
+            if (user == null || user.password != binding.etPassword.text.toString()) {
                 Toast.makeText(
                     this@LoginActivity,
                     "Correo o contraseña incorrectos",

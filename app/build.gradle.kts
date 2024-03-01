@@ -58,6 +58,7 @@ dependencies {
     implementation(Libraries.materialDesign)
     implementation(Libraries.constraintLayout)
     implementation(Libraries.picasso)
+    implementation(Libraries.lottie)
 
     // Architecture
     implementation(Libraries.activityKtx)

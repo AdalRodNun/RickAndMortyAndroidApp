@@ -4,17 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.myapp.rickandmorty.databinding.FragmentRegisterBinding
+import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.core.room.models.User
+import com.myapp.rickandmorty.databinding.FragmentRegisterBinding
 import com.myapp.rickandmorty.repository.RoomRepository
+import com.myapp.rickandmorty.utils.Functions.isValidEmail
+import com.myapp.rickandmorty.utils.SimpleTextWatcher
 import kotlinx.coroutines.launch
 
 class RegisterFragment : BottomSheetDialogFragment() {
+
     private lateinit var binding: FragmentRegisterBinding
     private val repository = RoomRepository()
 
@@ -30,103 +33,100 @@ class RegisterFragment : BottomSheetDialogFragment() {
             sheet.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
 
-        setListeners()
+        init()
 
         return binding.root
     }
 
-    private fun setListeners() {
-        binding.apply {
-            registerButton.setOnClickListener {
-                when {
-                    nameTxt.text.toString().isEmpty() -> Toast.makeText(
-                        requireContext(),
-                        "El campo Name esta vacio",
-                        Toast.LENGTH_LONG
-                    ).show()
+    private fun init() {
+        setListeners()
+        manageRegisterButton(isEnabled = false)
+    }
 
-                    nameTxt.text.toString().length > 10 -> Toast.makeText(
-                        requireContext(),
-                        "El campo Name ocupa ser maximo 10 caracteres",
-                        Toast.LENGTH_LONG
-                    ).show()
+    private fun manageRegisterButton(isEnabled: Boolean) {
+        binding.btRegister.isEnabled = isEnabled
+    }
 
-                    emailTxt.text.toString().isEmpty() -> Toast.makeText(
-                        requireContext(),
-                        "El campo Email esta vacio",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    !(android.util.Patterns.EMAIL_ADDRESS.matcher(emailTxt.text.toString())
-                        .matches()) -> Toast.makeText(
-                        requireContext(),
-                        "El campo Email es invalido",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    passwordText.text.toString().isEmpty() -> Toast.makeText(
-                        requireContext(),
-                        "El campo Password esta vacio",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    passwordText.text.toString().length < 5 || passwordText.text.toString().length > 10 -> Toast.makeText(
-                        requireContext(),
-                        "El campo Password ocupa ser de minimo 5 y maximo 10 caracteres",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    confirmPasswordText.text.toString().isEmpty() -> Toast.makeText(
-                        requireContext(),
-                        "El campo Confirm password esta vacio",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    confirmPasswordText.text.toString().length < 5 || passwordText.text.toString().length > 10 -> Toast.makeText(
-                        requireContext(),
-                        "El campo Confirm password ocupa ser de minimo 5 y maximo 10 caracteres",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    passwordText.text.toString() != confirmPasswordText.text.toString() -> Toast.makeText(
-                        requireContext(),
-                        "Las contraseñas son diferentes",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    else -> {
-                        registerUser()
-                    }
-                }
+    private fun setListeners() = with(binding) {
+        btRegister.setOnClickListener {
+            if (validateInputs()) {
+                registerUser()
             }
+        }
 
-            toolbar.setNavigationOnClickListener {
-                dismiss()
-            }
+        etName.addTextChangedListener(SimpleTextWatcher {
+            validateEmptyInputs()
+        })
+
+        etEmail.addTextChangedListener(SimpleTextWatcher {
+            validateEmptyInputs()
+            tilEmail.error = null
+        })
+
+        etPassword.addTextChangedListener(SimpleTextWatcher {
+            validateEmptyInputs()
+            tilPassword.error = null
+        })
+
+        etConfirmPassword.addTextChangedListener(SimpleTextWatcher {
+            validateEmptyInputs()
+            tilConfirmPassword.error = null
+        })
+    }
+
+    private fun validateInputs(): Boolean = with(binding) {
+        val email = etEmail.text.toString()
+        val password = etPassword.text.toString()
+        val confirmationPassword = etConfirmPassword.text.toString()
+        var valid = true
+
+        if (isValidEmail(email)) {
+            tilEmail.error = getString(R.string.invalid_email_error)
+            valid = false
+        }
+
+        if (password.length < 5) {
+            tilPassword.error = getString(R.string.password_long_error)
+            valid = false
+        }
+
+        if (password != confirmationPassword) {
+            tilConfirmPassword.error = getString(R.string.passwords_match_error)
+            valid = false
+        }
+
+        return valid
+    }
+
+    private fun validateEmptyInputs() = with(binding) {
+        if (etName.text.toString().isNotEmpty() &&
+            etEmail.text.toString().isNotEmpty() &&
+            etPassword.text.toString().isNotEmpty() &&
+            etConfirmPassword.text.toString().isNotEmpty()
+        ) {
+            manageRegisterButton(isEnabled = true)
         }
     }
 
+    // TODO - REFACTOR TO VIEW MODEL
     private fun registerUser() {
         binding.apply {
             lifecycleScope.launch {
                 repository.addUser(
                     User(
                         id = 0,
-                        name = nameTxt.text.toString(),
-                        email = emailTxt.text.toString(),
-                        password = passwordText.text.toString()
+                        name = etName.text.toString(),
+                        email = etEmail.text.toString(),
+                        password = etPassword.text.toString()
                     )
                 )
             }
         }
 
-        cleanFields()
+        dismiss()
     }
 
-    private fun cleanFields() = with(binding) {
-        nameTxt.setText("")
-        emailTxt.setText("")
-        passwordText.setText("")
-        confirmPasswordText.setText("")
+    companion object {
+        const val TAG = "RegisterBottomSheetFragment"
     }
 }
