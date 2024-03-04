@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myapp.rickandmorty.adapter.PersonsListAdapter
+import com.myapp.rickandmorty.core.data.Person
 import com.myapp.rickandmorty.databinding.FragmentListBinding
-import com.myapp.rickandmorty.core.room.models.Person
 import com.myapp.rickandmorty.repository.RoomRepository
 import com.myapp.rickandmorty.viewModel.ListFragmentViewModel
 import kotlinx.coroutines.launch
@@ -70,7 +70,7 @@ class ListFragment : Fragment() {
 
     private fun getPersonsList() {
         lifecycleScope.launch {
-            val people = repository.getAllPersons()
+            val people = repository.getAllPersonsByUserUUID()
 
             viewModel.updatePersons(people)
         }

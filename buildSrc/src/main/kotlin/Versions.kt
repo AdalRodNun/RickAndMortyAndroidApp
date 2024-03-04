@@ -16,6 +16,9 @@ object Versions {
     const val lottie = "3.7.0"
     const val picasso = "2.71828"
 
+    // Hashing
+    const val jbcrypt = "0.4"
+
     // Test
     const val jUnit = "4.13.2"
     const val jUnitTest = "1.1.5"

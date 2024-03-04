@@ -2,19 +2,27 @@ package com.myapp.rickandmorty.core
 
 import android.app.Application
 import androidx.room.Room
-import com.myapp.rickandmorty.core.service.APIService.getAPIRetrofit
+import com.myapp.rickandmorty.core.retrofit.APIService.getAPIRetrofit
 import com.myapp.rickandmorty.core.room.RoomDatabase
 import com.myapp.rickandmorty.utils.Constants.ROOM_DATABASE_NAME
 import retrofit2.Retrofit
+import java.util.UUID
 
 class App : Application() {
 
     companion object {
+        lateinit var userUUID: UUID
+            private set
+
         lateinit var room: RoomDatabase
             private set
 
         lateinit var retrofit: Retrofit
             private set
+
+        fun setUserUUID(userID: UUID) {
+            userUUID = userID
+        }
     }
 
     override fun onCreate() {
@@ -25,5 +33,6 @@ class App : Application() {
             .build()
 
         retrofit = getAPIRetrofit()
+
     }
 }

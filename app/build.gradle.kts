@@ -66,6 +66,9 @@ dependencies {
     implementation(Libraries.viewModel)
     implementation(Libraries.liveData)
 
+    // Hashing
+    implementation(Libraries.jbcrypt)
+
     // Test
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)

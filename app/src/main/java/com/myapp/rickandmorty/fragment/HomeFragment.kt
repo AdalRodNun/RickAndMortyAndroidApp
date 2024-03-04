@@ -18,8 +18,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.myapp.rickandmorty.R
+import com.myapp.rickandmorty.core.data.Person
 import com.myapp.rickandmorty.databinding.FragmentHomeBinding
-import com.myapp.rickandmorty.core.room.models.Person
 import com.myapp.rickandmorty.repository.RoomRepository
 import com.myapp.rickandmorty.viewModel.HomeFragmentViewModel
 import kotlinx.coroutines.launch
@@ -223,7 +223,6 @@ class HomeFragment : Fragment() {
             lifecycleScope.launch {
                 repository.addPerson(
                     Person(
-                        id = 0,
                         photo = bitmapToString(picture),
                         name = nameTxt.text.toString(),
                         age = age!!,

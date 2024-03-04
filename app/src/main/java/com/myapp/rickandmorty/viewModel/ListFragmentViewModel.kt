@@ -3,7 +3,7 @@ package com.myapp.rickandmorty.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.myapp.rickandmorty.core.room.models.Person
+import com.myapp.rickandmorty.core.data.Person
 
 class ListFragmentViewModel : ViewModel() {
     private val _listPersons = MutableLiveData<List<Person>>()

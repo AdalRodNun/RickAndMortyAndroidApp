@@ -16,6 +16,9 @@ object Libraries {
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
     const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 
+    // Hashing
+    const val jbcrypt = "org.mindrot:jbcrypt:${Versions.jbcrypt}"
+
     // Test
     const val junit = "junit:junit:${Versions.jUnit}"
     const val junitTest = "androidx.test.ext:junit:${Versions.jUnitTest}"

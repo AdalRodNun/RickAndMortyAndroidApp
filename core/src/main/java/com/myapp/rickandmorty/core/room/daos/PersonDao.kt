@@ -2,15 +2,18 @@ package com.myapp.rickandmorty.core.room.daos
 
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
+import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Query
-import com.myapp.rickandmorty.core.room.models.Person
+import com.myapp.rickandmorty.core.room.models.PersonEntity
+import java.util.UUID
 
 @Dao
 interface PersonDao {
-    @Query("SELECT * from Person")
-    suspend fun getAllPersons(): List<Person>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addPerson(person: Person)
+    @Insert(onConflict = IGNORE)
+    suspend fun addPerson(person: PersonEntity)
+
+    @Query("SELECT * FROM person WHERE userUUID == :userUUID")
+    suspend fun getAllPersonsByUserUUID(userUUID: UUID): List<PersonEntity>
+
 }

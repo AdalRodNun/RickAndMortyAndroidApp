@@ -1,4 +1,4 @@
-package com.myapp.rickandmorty.core.service
+package com.myapp.rickandmorty.core.retrofit
 
 import com.myapp.rickandmorty.utils.Constants.BASE_URL
 import okhttp3.OkHttpClient

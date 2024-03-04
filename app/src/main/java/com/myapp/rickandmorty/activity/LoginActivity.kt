@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.myapp.rickandmorty.R
+import com.myapp.rickandmorty.core.App.Companion.setUserUUID
 import com.myapp.rickandmorty.databinding.ActivityLoginBinding
 import com.myapp.rickandmorty.fragment.RegisterFragment
 import com.myapp.rickandmorty.fragment.RegisterFragment.Companion.TAG
@@ -14,7 +15,7 @@ import com.myapp.rickandmorty.utils.ExtendedFunctions.getPackageInfoCompat
 import com.myapp.rickandmorty.utils.Functions.isValidEmail
 import com.myapp.rickandmorty.utils.SimpleTextWatcher
 import kotlinx.coroutines.launch
-
+import org.mindrot.jbcrypt.BCrypt
 
 class LoginActivity : AppCompatActivity() {
 
@@ -88,13 +89,17 @@ class LoginActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val user = repository.findUserByEmail(binding.etEmail.text.toString())
 
-            if (user == null || user.password != binding.etPassword.text.toString()) {
+            val passwordToCheck = binding.etPassword.text.toString()
+
+            if (user == null || !BCrypt.checkpw(passwordToCheck, user.password)) {
                 Toast.makeText(
                     this@LoginActivity,
                     "Correo o contraseña incorrectos",
                     Toast.LENGTH_LONG
                 ).show()
             } else {
+                setUserUUID(user.uuid)
+
                 val intent = Intent(
                     this@LoginActivity,
                     ContainerActivity::class.java

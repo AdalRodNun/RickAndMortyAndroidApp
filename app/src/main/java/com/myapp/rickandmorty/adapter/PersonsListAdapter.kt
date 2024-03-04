@@ -6,8 +6,8 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.myapp.rickandmorty.core.data.Person
 import com.myapp.rickandmorty.databinding.ItemPersonsListBinding
-import com.myapp.rickandmorty.core.room.models.Person
 
 class PersonsListAdapter(
     private var personsList: List<Person>,

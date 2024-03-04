@@ -1,4 +1,4 @@
-package com.myapp.rickandmorty.core.service
+package com.myapp.rickandmorty.core.retrofit
 
 sealed class ResponseApi<T> {
     class Loading<T> : ResponseApi<T>()

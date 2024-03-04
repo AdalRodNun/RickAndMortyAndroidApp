@@ -9,12 +9,13 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.myapp.rickandmorty.R
-import com.myapp.rickandmorty.core.room.models.User
+import com.myapp.rickandmorty.core.data.User
 import com.myapp.rickandmorty.databinding.FragmentRegisterBinding
 import com.myapp.rickandmorty.repository.RoomRepository
 import com.myapp.rickandmorty.utils.Functions.isValidEmail
 import com.myapp.rickandmorty.utils.SimpleTextWatcher
 import kotlinx.coroutines.launch
+import org.mindrot.jbcrypt.BCrypt
 
 class RegisterFragment : BottomSheetDialogFragment() {
 
@@ -112,12 +113,13 @@ class RegisterFragment : BottomSheetDialogFragment() {
     private fun registerUser() {
         binding.apply {
             lifecycleScope.launch {
+                val hashedPassword = BCrypt.hashpw(etPassword.text.toString(), BCrypt.gensalt())
+
                 repository.addUser(
                     User(
-                        id = 0,
                         name = etName.text.toString(),
                         email = etEmail.text.toString(),
-                        password = etPassword.text.toString()
+                        password = hashedPassword
                     )
                 )
             }
