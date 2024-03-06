@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -65,6 +66,10 @@ dependencies {
     implementation(Libraries.fragmentKtx)
     implementation(Libraries.viewModel)
     implementation(Libraries.liveData)
+
+    // Dagger
+    implementation(Libraries.dagger)
+    kapt(Libraries.daggerCompiler)
 
     // Test
     testImplementation(Libraries.junit)

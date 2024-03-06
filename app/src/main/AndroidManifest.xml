@@ -17,10 +17,10 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
             <activity
-                android:name="com.myapp.rickandmorty.activity.ContainerActivity"
+                android:name="com.myapp.rickandmorty.ui.activity.ContainerActivity"
                 android:exported="true" />
             <activity
-                android:name="com.myapp.rickandmorty.activity.LoginActivity"
+                android:name="com.myapp.rickandmorty.ui.activity.LoginActivity"
                 android:exported="true"
                 android:theme="@style/SplashTheme">
                 <intent-filter>

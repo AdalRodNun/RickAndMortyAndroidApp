@@ -49,6 +49,9 @@ dependencies {
     implementation(Libraries.retrofit)
     implementation(Libraries.converterGson)
 
+    // Hashing
+    implementation(Libraries.jbcrypt)
+
     // Test
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)
