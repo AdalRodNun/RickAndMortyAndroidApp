@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -66,8 +67,9 @@ dependencies {
     implementation(Libraries.viewModel)
     implementation(Libraries.liveData)
 
-    // Hashing
-    implementation(Libraries.jbcrypt)
+    // Dagger
+    implementation(Libraries.dagger)
+    kapt(Libraries.daggerCompiler)
 
     // Test
     testImplementation(Libraries.junit)

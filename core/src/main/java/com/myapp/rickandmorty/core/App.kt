@@ -2,8 +2,8 @@ package com.myapp.rickandmorty.core
 
 import android.app.Application
 import androidx.room.Room
-import com.myapp.rickandmorty.core.retrofit.APIService.getAPIRetrofit
-import com.myapp.rickandmorty.core.room.RoomDatabase
+import com.myapp.rickandmorty.core.framework.retrofit.APIService.getAPIRetrofit
+import com.myapp.rickandmorty.core.framework.room.RoomDatabase
 import com.myapp.rickandmorty.utils.Constants.ROOM_DATABASE_NAME
 import retrofit2.Retrofit
 import java.util.UUID
