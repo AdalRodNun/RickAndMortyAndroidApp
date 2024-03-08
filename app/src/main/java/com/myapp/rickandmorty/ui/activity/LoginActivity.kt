@@ -13,7 +13,9 @@ import com.myapp.rickandmorty.ui.viewModel.LoginViewModel
 import com.myapp.rickandmorty.utils.ExtendedFunctions.getPackageInfoCompat
 import com.myapp.rickandmorty.utils.Functions.isValidEmail
 import com.myapp.rickandmorty.utils.SimpleTextWatcher
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding

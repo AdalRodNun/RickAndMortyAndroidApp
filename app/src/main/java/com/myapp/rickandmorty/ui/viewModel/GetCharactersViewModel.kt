@@ -4,56 +4,37 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.myapp.rickandmorty.services.domains.CharacterRDomain
-import com.myapp.rickandmorty.services.models.toDomain
-import com.myapp.rickandmorty.services.repository.ServiceRepository
+import com.myapp.rickandmorty.domain.model.CharacterR
+import com.myapp.rickandmorty.domain.useCase.GetCharactersByName
+import com.myapp.rickandmorty.domain.useCase.GetCharacters
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class GetCharactersViewModel : ViewModel() {
-    private val repository = ServiceRepository()
+@HiltViewModel
+class GetCharactersViewModel @Inject constructor(
+    private val getCharacters: GetCharacters,
+    private val getCharacterByName: GetCharactersByName
+) : ViewModel() {
 
     private val _onError = MutableLiveData<String>()
     val onError: LiveData<String> get() = _onError
 
-    private val _getCharactersResponse = MutableLiveData<ArrayList<CharacterRDomain>>()
-    val getCharactersResponse: LiveData<ArrayList<CharacterRDomain>> get() = _getCharactersResponse
+    private val _getCharactersResponse = MutableLiveData<List<CharacterR>>()
+    val getCharactersResponse: LiveData<List<CharacterR>> get() = _getCharactersResponse
 
     fun getCharacters() = viewModelScope.launch {
-        repository.getCharacters().let { response ->
-            try {
-                if (response.isSuccessful) {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        _getCharactersResponse.value = response.body()?.characters?.map {
-                            it.toDomain()
-                        } as ArrayList<CharacterRDomain>?
-                    }
-                }
-            } catch (ex: Exception) {
-                setOnError(ex.message ?: "Error with GetCharacters Service")
-            }
-        }
+        val characters = getCharacters.invoke()
+
+        _getCharactersResponse.value = characters
     }
 
-    fun getCharactersByName(url: String) = viewModelScope.launch {
-        repository.getCharactersByName(url).let { response ->
-            try {
-                if (response.isSuccessful) {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        _getCharactersResponse.value = response.body()?.characters?.map {
-                            it.toDomain()
-                        } as ArrayList<CharacterRDomain>?
-                    }
-                } else {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        _getCharactersResponse.value = ArrayList()
-                    }
-                }
-            } catch (ex: Exception) {
-                setOnError(ex.message ?: "Error with GetCharactersByName Service")
-            }
-        }
+    fun getCharactersByName(name: String) = viewModelScope.launch {
+        val characters = getCharacterByName(name)
+
+        _getCharactersResponse.value = characters
     }
 
     private fun setOnError(message: String) = CoroutineScope(Dispatchers.Main).launch {

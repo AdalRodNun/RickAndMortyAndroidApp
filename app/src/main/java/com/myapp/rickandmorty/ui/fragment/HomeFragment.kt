@@ -16,13 +16,9 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.myapp.rickandmorty.R
-import com.myapp.rickandmorty.core.data.Person
 import com.myapp.rickandmorty.databinding.FragmentHomeBinding
-import com.myapp.rickandmorty.repository.RoomRepository
 import com.myapp.rickandmorty.ui.viewModel.HomeFragmentViewModel
-import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -30,7 +26,6 @@ import java.util.Date
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var textWatcher: TextWatcher
-    private val repository = RoomRepository()
     private val viewModel: HomeFragmentViewModel by viewModels()
     private var picture: Bitmap? = null
     private var age: Int? = null
@@ -124,7 +119,7 @@ class HomeFragment : Fragment() {
                     ).show()
 
                     else -> {
-                        saveInfo()
+                        //saveInfo()
                     }
                 }
             }
@@ -218,7 +213,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun saveInfo() {
+    /*private fun saveInfo() {
         binding.apply {
             lifecycleScope.launch {
                 repository.addPerson(
@@ -235,7 +230,7 @@ class HomeFragment : Fragment() {
         }
 
         cleanFields()
-    }
+    }*/
 
     private fun bitmapToString(image: Bitmap?): String {
         val string = ByteArrayOutputStream()

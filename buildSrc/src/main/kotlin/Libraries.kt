@@ -16,9 +16,9 @@ object Libraries {
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
     const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 
-    // Dagger
-    const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-    const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    // Dagger Hilt
+    const val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
+    const val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
 
     // Hashing
     const val jbcrypt = "org.mindrot:jbcrypt:${Versions.jbcrypt}"

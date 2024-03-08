@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.myapp.rickandmorty.databinding.ItemCharactersListBinding
-import com.myapp.rickandmorty.services.domains.CharacterRDomain
+import com.myapp.rickandmorty.domain.model.CharacterR
 import com.squareup.picasso.Picasso
 
-class CharactersListAdapter(private var charactersList: MutableList<CharacterRDomain>) :
+class CharactersListAdapter(private var charactersList: MutableList<CharacterR>) :
     RecyclerView.Adapter<CharactersListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
