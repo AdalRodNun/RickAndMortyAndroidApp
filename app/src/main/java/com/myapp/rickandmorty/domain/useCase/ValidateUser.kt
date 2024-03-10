@@ -1,7 +1,7 @@
 package com.myapp.rickandmorty.domain.useCase
 
 import com.myapp.rickandmorty.data.repository.UserRepository
-import com.myapp.rickandmorty.di.UserUUID
+import com.myapp.rickandmorty.core.data.UserUUID
 import org.mindrot.jbcrypt.BCrypt
 import javax.inject.Inject
 

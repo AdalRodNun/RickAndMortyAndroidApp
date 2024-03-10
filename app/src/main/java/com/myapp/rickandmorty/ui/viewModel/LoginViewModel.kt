@@ -17,7 +17,6 @@ class LoginViewModel @Inject constructor(
     private val _checked = MutableLiveData<Boolean>()
     val checked: LiveData<Boolean> get() = _checked
 
-
     fun checkUser(email: String, password: String) = viewModelScope.launch {
         val checked = validateUser(email, password)
         _checked.postValue(checked)

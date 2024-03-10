@@ -18,7 +18,6 @@ class RegisterViewModel @Inject constructor(
     private val _saved = MutableLiveData<Boolean>()
     val saved: LiveData<Boolean> get() = _saved
 
-
     fun saveUser(user: User) = viewModelScope.launch {
         addUser(user)
         _saved.postValue(true)

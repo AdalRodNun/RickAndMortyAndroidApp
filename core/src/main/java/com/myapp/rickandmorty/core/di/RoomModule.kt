@@ -1,4 +1,4 @@
-package com.myapp.rickandmorty.di
+package com.myapp.rickandmorty.core.di
 
 import android.content.Context
 import androidx.room.Room

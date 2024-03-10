@@ -1,4 +1,4 @@
-package com.myapp.rickandmorty.di
+package com.myapp.rickandmorty.core.data
 
 import java.util.UUID
 

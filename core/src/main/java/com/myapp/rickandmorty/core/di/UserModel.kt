@@ -1,5 +1,6 @@
-package com.myapp.rickandmorty.di
+package com.myapp.rickandmorty.core.di
 
+import com.myapp.rickandmorty.core.data.UserUUID
 import javax.inject.Singleton
 
 import dagger.Module

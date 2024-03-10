@@ -1,8 +1,6 @@
 package com.myapp.rickandmorty.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.myapp.rickandmorty.R
@@ -11,6 +9,7 @@ import com.myapp.rickandmorty.ui.fragment.RegisterFragment
 import com.myapp.rickandmorty.ui.fragment.RegisterFragment.Companion.TAG
 import com.myapp.rickandmorty.ui.viewModel.LoginViewModel
 import com.myapp.rickandmorty.utils.ExtendedFunctions.getPackageInfoCompat
+import com.myapp.rickandmorty.utils.ExtendedFunctions.goActivity
 import com.myapp.rickandmorty.utils.Functions.isValidEmail
 import com.myapp.rickandmorty.utils.SimpleTextWatcher
 import dagger.hilt.android.AndroidEntryPoint
@@ -65,18 +64,9 @@ class LoginActivity : AppCompatActivity() {
     private fun getObservers() = with(viewModel) {
         checked.observe(this@LoginActivity) {
             if (it) {
-                val intent = Intent(
-                    this@LoginActivity,
-                    ContainerActivity::class.java
-                )
-                finish()
-                startActivity(intent)
+                goActivity(activity = ContainerActivity(), finishCurrent = true)
             } else {
-                Toast.makeText(
-                    this@LoginActivity,
-                    "Correo o contraseña incorrectos",
-                    Toast.LENGTH_LONG
-                ).show()
+                binding.tilPassword.error = "Contraseña incorrecta"
             }
         }
     }

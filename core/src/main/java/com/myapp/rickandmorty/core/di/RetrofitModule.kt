@@ -1,6 +1,5 @@
-package com.myapp.rickandmorty.di
+package com.myapp.rickandmorty.core.di
 
-import com.myapp.rickandmorty.APIService
 import com.myapp.rickandmorty.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -20,26 +19,22 @@ object RetrofitModule {
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(getClient())
+            .build()
+    }
+
+    private fun getClient(): OkHttpClient {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
 
-        val client = OkHttpClient.Builder()
+        return OkHttpClient.Builder()
             .readTimeout(10, TimeUnit.SECONDS)
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .addInterceptor(interceptor)
             .build()
-
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideCharacterApiClient(retrofit: Retrofit): APIService {
-        return retrofit.create(APIService::class.java)
     }
 }

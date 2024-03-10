@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.myapp.rickandmorty.core.retrofit.ApiResponse
 import com.myapp.rickandmorty.domain.model.CharacterR
+import com.myapp.rickandmorty.domain.model.toDomain
 import com.myapp.rickandmorty.domain.useCase.GetCharactersByName
 import com.myapp.rickandmorty.domain.useCase.GetCharacters
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,15 +28,27 @@ class GetCharactersViewModel @Inject constructor(
     val getCharactersResponse: LiveData<List<CharacterR>> get() = _getCharactersResponse
 
     fun getCharacters() = viewModelScope.launch {
-        val characters = getCharacters.invoke()
-
-        _getCharactersResponse.value = characters
+        when (val response = getCharacters.invoke()) {
+            is ApiResponse.Loading -> {}
+            is ApiResponse.Success -> {
+                _getCharactersResponse.value = response.data?.characters?.map { it.toDomain() }
+            }
+            is ApiResponse.Error -> {
+                setOnError(response.message ?: "ERROR NOT FOUND")
+            }
+        }
     }
 
     fun getCharactersByName(name: String) = viewModelScope.launch {
-        val characters = getCharacterByName(name)
-
-        _getCharactersResponse.value = characters
+        when (val response = getCharacterByName(name)) {
+            is ApiResponse.Loading -> {}
+            is ApiResponse.Success -> {
+                _getCharactersResponse.value = response.data?.characters?.map { it.toDomain() }
+            }
+            is ApiResponse.Error -> {
+                setOnError(response.message ?: "ERROR NOT FOUND")
+            }
+        }
     }
 
     private fun setOnError(message: String) = CoroutineScope(Dispatchers.Main).launch {
