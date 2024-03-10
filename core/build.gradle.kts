@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -49,8 +50,9 @@ dependencies {
     implementation(Libraries.retrofit)
     implementation(Libraries.converterGson)
 
-    // Hashing
-    implementation(Libraries.jbcrypt)
+    // Dagger
+    implementation(Libraries.daggerHilt)
+    kapt(Libraries.daggerHiltCompiler)
 
     // Test
     testImplementation(Libraries.junit)

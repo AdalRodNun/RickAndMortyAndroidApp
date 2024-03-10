@@ -6,19 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.myapp.rickandmorty.ui.adapter.PersonsListAdapter
 import com.myapp.rickandmorty.core.data.Person
 import com.myapp.rickandmorty.databinding.FragmentListBinding
-import com.myapp.rickandmorty.repository.RoomRepository
+import com.myapp.rickandmorty.ui.adapter.PersonsListAdapter
 import com.myapp.rickandmorty.ui.viewModel.ListFragmentViewModel
-import kotlinx.coroutines.launch
 
 class ListFragment : Fragment() {
     private val viewModel = ListFragmentViewModel()
     private lateinit var binding: FragmentListBinding
-    private val repository = RoomRepository()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +30,7 @@ class ListFragment : Fragment() {
 
     private fun init() {
         initRecyclerView()
-        getPersonsList()
+        //getPersonsList()
         setObservers()
     }
 
@@ -68,11 +64,11 @@ class ListFragment : Fragment() {
         informationDialogFragment.show(parentFragmentManager, "informationDialogFragment")
     }
 
-    private fun getPersonsList() {
+    /*private fun getPersonsList() {
         lifecycleScope.launch {
             val people = repository.getAllPersonsByUserUUID()
 
             viewModel.updatePersons(people)
         }
-    }
+    }*/
 }

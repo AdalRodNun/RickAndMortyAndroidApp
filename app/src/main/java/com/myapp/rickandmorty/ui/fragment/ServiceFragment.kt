@@ -11,13 +11,15 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myapp.rickandmorty.ui.adapter.CharactersListAdapter
 import com.myapp.rickandmorty.databinding.FragmentServiceBinding
-import com.myapp.rickandmorty.services.domains.CharacterRDomain
+import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.ui.viewModel.GetCharactersViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ServiceFragment : Fragment() {
     private lateinit var binding: FragmentServiceBinding
     private lateinit var adapter: CharactersListAdapter
-    private var charactersList = arrayListOf<CharacterRDomain>()
+    private var charactersList = arrayListOf<CharacterR>()
     private val viewModel: GetCharactersViewModel by viewModels()
 
     override fun onCreateView(

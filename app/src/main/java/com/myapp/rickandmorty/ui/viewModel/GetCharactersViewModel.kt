@@ -4,54 +4,49 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.myapp.rickandmorty.services.domains.CharacterRDomain
-import com.myapp.rickandmorty.services.models.toDomain
-import com.myapp.rickandmorty.services.repository.ServiceRepository
+import com.myapp.rickandmorty.core.retrofit.ApiResponse
+import com.myapp.rickandmorty.domain.model.CharacterR
+import com.myapp.rickandmorty.domain.model.toDomain
+import com.myapp.rickandmorty.domain.useCase.GetCharactersByName
+import com.myapp.rickandmorty.domain.useCase.GetCharacters
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class GetCharactersViewModel : ViewModel() {
-    private val repository = ServiceRepository()
+@HiltViewModel
+class GetCharactersViewModel @Inject constructor(
+    private val getCharacters: GetCharacters,
+    private val getCharacterByName: GetCharactersByName
+) : ViewModel() {
 
     private val _onError = MutableLiveData<String>()
     val onError: LiveData<String> get() = _onError
 
-    private val _getCharactersResponse = MutableLiveData<ArrayList<CharacterRDomain>>()
-    val getCharactersResponse: LiveData<ArrayList<CharacterRDomain>> get() = _getCharactersResponse
+    private val _getCharactersResponse = MutableLiveData<List<CharacterR>>()
+    val getCharactersResponse: LiveData<List<CharacterR>> get() = _getCharactersResponse
 
     fun getCharacters() = viewModelScope.launch {
-        repository.getCharacters().let { response ->
-            try {
-                if (response.isSuccessful) {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        _getCharactersResponse.value = response.body()?.characters?.map {
-                            it.toDomain()
-                        } as ArrayList<CharacterRDomain>?
-                    }
-                }
-            } catch (ex: Exception) {
-                setOnError(ex.message ?: "Error with GetCharacters Service")
+        when (val response = getCharacters.invoke()) {
+            is ApiResponse.Loading -> {}
+            is ApiResponse.Success -> {
+                _getCharactersResponse.value = response.data?.characters?.map { it.toDomain() }
+            }
+            is ApiResponse.Error -> {
+                setOnError(response.message ?: "ERROR NOT FOUND")
             }
         }
     }
 
-    fun getCharactersByName(url: String) = viewModelScope.launch {
-        repository.getCharactersByName(url).let { response ->
-            try {
-                if (response.isSuccessful) {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        _getCharactersResponse.value = response.body()?.characters?.map {
-                            it.toDomain()
-                        } as ArrayList<CharacterRDomain>?
-                    }
-                } else {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        _getCharactersResponse.value = ArrayList()
-                    }
-                }
-            } catch (ex: Exception) {
-                setOnError(ex.message ?: "Error with GetCharactersByName Service")
+    fun getCharactersByName(name: String) = viewModelScope.launch {
+        when (val response = getCharacterByName(name)) {
+            is ApiResponse.Loading -> {}
+            is ApiResponse.Success -> {
+                _getCharactersResponse.value = response.data?.characters?.map { it.toDomain() }
+            }
+            is ApiResponse.Error -> {
+                setOnError(response.message ?: "ERROR NOT FOUND")
             }
         }
     }

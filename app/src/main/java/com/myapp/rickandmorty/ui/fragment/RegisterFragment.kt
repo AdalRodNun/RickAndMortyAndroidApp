@@ -14,7 +14,9 @@ import com.myapp.rickandmorty.databinding.FragmentRegisterBinding
 import com.myapp.rickandmorty.ui.viewModel.RegisterViewModel
 import com.myapp.rickandmorty.utils.Functions.isValidEmail
 import com.myapp.rickandmorty.utils.SimpleTextWatcher
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentRegisterBinding

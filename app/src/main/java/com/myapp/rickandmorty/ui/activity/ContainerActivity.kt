@@ -8,7 +8,9 @@ import com.myapp.rickandmorty.databinding.ActivityContainerBinding
 import com.myapp.rickandmorty.ui.fragment.HomeFragment
 import com.myapp.rickandmorty.ui.fragment.ListFragment
 import com.myapp.rickandmorty.ui.fragment.ServiceFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ContainerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityContainerBinding
 
