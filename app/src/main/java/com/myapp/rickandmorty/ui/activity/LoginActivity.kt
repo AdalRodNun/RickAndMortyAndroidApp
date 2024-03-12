@@ -1,5 +1,6 @@
 package com.myapp.rickandmorty.ui.activity
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        manageLottieTheme()
         setListeners()
         setVersion()
         getObservers()
@@ -96,4 +98,18 @@ class LoginActivity : AppCompatActivity() {
     private fun checkLogin() {
         viewModel.checkUser(binding.etEmail.text.toString(), binding.etPassword.text.toString())
     }
+
+    private fun manageLottieTheme() {
+        val animationName =
+            when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                Configuration.UI_MODE_NIGHT_YES -> "android_andy_negative.json"
+                Configuration.UI_MODE_NIGHT_NO -> "android_andy.json"
+                else -> "android_andy.json"
+            }
+
+        binding.lavAndroid.setAnimation(animationName)
+
+        binding.lavAndroid.playAnimation()
+    }
+
 }
