@@ -6,6 +6,6 @@ import javax.inject.Inject
 class GetCharacters @Inject constructor(
     private val repository: CharacterRepository
 ) {
-    suspend operator fun invoke() = repository.getCharacters()
+    suspend operator fun invoke() = repository.getAllCharacters(1)
 
 }

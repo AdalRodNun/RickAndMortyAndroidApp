@@ -10,8 +10,6 @@ import com.myapp.rickandmorty.domain.model.toDomain
 import com.myapp.rickandmorty.domain.useCase.GetCharactersByName
 import com.myapp.rickandmorty.domain.useCase.GetCharacters
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,6 +25,10 @@ class GetCharactersViewModel @Inject constructor(
     private val _getCharactersResponse = MutableLiveData<List<CharacterR>>()
     val getCharactersResponse: LiveData<List<CharacterR>> get() = _getCharactersResponse
 
+    init {
+        getCharacters()
+    }
+
     fun getCharacters() = viewModelScope.launch {
         when (val response = getCharacters.invoke()) {
             is ApiResponse.Loading -> {}
@@ -35,6 +37,7 @@ class GetCharactersViewModel @Inject constructor(
             }
             is ApiResponse.Error -> {
                 setOnError(response.message ?: "ERROR NOT FOUND")
+                _getCharactersResponse.value = emptyList()
             }
         }
     }
@@ -47,11 +50,12 @@ class GetCharactersViewModel @Inject constructor(
             }
             is ApiResponse.Error -> {
                 setOnError(response.message ?: "ERROR NOT FOUND")
+                _getCharactersResponse.value = emptyList()
             }
         }
     }
 
-    private fun setOnError(message: String) = CoroutineScope(Dispatchers.Main).launch {
+    private fun setOnError(message: String) = viewModelScope.launch {
         _onError.value = message
     }
 }

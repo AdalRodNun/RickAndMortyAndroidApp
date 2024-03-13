@@ -15,8 +15,8 @@ class CharacterRepository @Inject constructor(
     private val characterDao: CharacterDao,
     private val userUUID: UserUUID
 ) {
-    suspend fun getCharacters(): ApiResponse<CharacterResponse> {
-        return api.getCharacters()
+    suspend fun getAllCharacters(page: Int): ApiResponse<CharacterResponse> {
+        return api.getAllCharacters(page)
     }
 
     suspend fun getCharactersByName(name: String): ApiResponse<CharacterResponse> {

@@ -2,24 +2,28 @@ package com.myapp.rickandmorty.ui.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.myapp.rickandmorty.ui.adapter.CharactersListAdapter
 import com.myapp.rickandmorty.databinding.FragmentServiceBinding
 import com.myapp.rickandmorty.domain.model.CharacterR
+import com.myapp.rickandmorty.ui.adapter.CharactersAdapter
 import com.myapp.rickandmorty.ui.viewModel.GetCharactersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ServiceFragment : Fragment() {
+
     private lateinit var binding: FragmentServiceBinding
-    private lateinit var adapter: CharactersListAdapter
-    private var charactersList = arrayListOf<CharacterR>()
+    private lateinit var charactersAdapter: CharactersAdapter
+
+    private var charactersList = mutableListOf<CharacterR>()
     private val viewModel: GetCharactersViewModel by viewModels()
 
     override fun onCreateView(
@@ -28,50 +32,81 @@ class ServiceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentServiceBinding.inflate(inflater, container, false)
-
-        setListeners()
-        setObservers()
-        initRecyclerView()
-        viewModel.getCharacters()
-
         return binding.root
     }
 
-    private fun setListeners() {
-        //lifecycleScope(Dispatchers.IO).launch {  }
-        binding.apply {
-            searchButton.setOnClickListener {
-                if (searchTxt.text.toString().isEmpty()) {
-                    Toast.makeText(
-                        requireContext(),
-                        "El campo Buscar esta vacio",
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    viewModel.getCharactersByName(searchTxt.text.toString().lowercase())
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
+    }
+
+    private fun init() {
+        initRecyclerView()
+        setListeners()
+        setObservers()
+        setOnBackPressed()
+    }
+
+    private fun initRecyclerView() {
+        charactersAdapter = CharactersAdapter(
+            charactersDataSet = charactersList,
+            onClickListener = { character -> onItemSelected(character) })
+        binding.recylerService.layoutManager = LinearLayoutManager(requireContext())
+        binding.recylerService.adapter = charactersAdapter
+    }
+
+    private fun setListeners() = with(binding) {
+        searchView.editText.setOnEditorActionListener { _, _, _ ->
+            val text = searchView.text.toString()
+            if (text.isNotEmpty()) viewModel.getCharactersByName(text.lowercase())
+            else viewModel.getCharacters()
+
+            searchBar.setText(text)
+            searchView.hide()
+            false
+        }
+
+        searchView.setOnMenuItemClickListener {
+            Log.e("Test", it.toString())
+            false
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun setObservers() = with(viewModel) {
+        onError.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+        }
+
+        getCharactersResponse.observe(viewLifecycleOwner) { list ->
+            charactersList.clear()
+            charactersList.addAll(list)
+            charactersAdapter.notifyDataSetChanged()
+
+            if (list.isEmpty()) {
+                //TODO EMPTY LIST VIEW
+            } else {
+
             }
         }
     }
 
-    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
-    private fun setObservers() {
-        viewModel.onError.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
-        }
-
-        viewModel.getCharactersResponse.observe(viewLifecycleOwner) {
-            charactersList.clear()
-            charactersList.addAll(it)
-
-            binding.totalTxt.text = "Total ${it.size} characters"
-            adapter.notifyDataSetChanged()
-        }
+    private fun onItemSelected(character: CharacterR) {
+        Toast.makeText(requireContext(), character.name, Toast.LENGTH_LONG).show()
     }
 
-    private fun initRecyclerView() {
-        adapter = CharactersListAdapter(charactersList)
-        binding.recylerService.layoutManager = LinearLayoutManager(requireContext())
-        binding.recylerService.adapter = adapter
+    private fun setOnBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (binding.searchView.isShowing) {
+                        binding.searchView.hide()
+                    } else {
+                        isEnabled = false
+                        requireActivity().onBackPressedDispatcher.onBackPressed()
+                    }
+                }
+            })
     }
 }

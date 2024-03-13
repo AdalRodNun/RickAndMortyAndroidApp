@@ -33,4 +33,9 @@
     <string name="search">Buscar</string>
     <string name="camera_icon">Icono de cámara</string>
     <string name="register_new_account">Registrar nueva cuenta</string>
+
+    <!--Container Menu-->
+    <string name="online_menu">Personajes en línea</string>
+    <string name="my_menu">Mis personajes</string>
+    <string name="home_menu">Menú principal</string>
 </resources>

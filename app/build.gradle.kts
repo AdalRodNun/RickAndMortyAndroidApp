@@ -59,8 +59,9 @@ dependencies {
     // Design
     implementation(Libraries.materialDesign)
     implementation(Libraries.constraintLayout)
-    implementation(Libraries.picasso)
     implementation(Libraries.lottie)
+    implementation(Libraries.glide)
+    kapt(Libraries.glideCompiler)
 
     // Architecture
     implementation(Libraries.activityKtx)
@@ -70,6 +71,9 @@ dependencies {
 
     // Hashing
     implementation(Libraries.jbcrypt)
+
+    // Paging3
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
 
     // Dagger
     implementation(Libraries.daggerHilt)

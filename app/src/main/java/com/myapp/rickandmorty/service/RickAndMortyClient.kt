@@ -9,8 +9,8 @@ class RickAndMortyClient @Inject constructor(
     private val api: RickAndMortyService,
     private val apiHandler: ApiHandler
 ) {
-    suspend fun getCharacters(): ApiResponse<CharacterResponse> {
-        return apiHandler.handleApi { api.getCharacters() }
+    suspend fun getAllCharacters(page: Int): ApiResponse<CharacterResponse> {
+        return apiHandler.handleApi { api.getAllCharacters(page) }
     }
 
     suspend fun getCharactersByName(name: String): ApiResponse<CharacterResponse> {

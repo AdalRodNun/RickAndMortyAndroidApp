@@ -14,7 +14,8 @@ object Libraries {
     const val materialDesign = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
-    const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
 
     // Dagger Hilt
     const val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"

@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ContainerActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityContainerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,46 +20,59 @@ class ContainerActivity : AppCompatActivity() {
 
         binding = ActivityContainerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(HomeFragment())
+
         init()
     }
 
     private fun init() {
+        setDefault()
         setListeners()
+    }
 
-        binding.bottomNavigation.selectedItemId = R.id.ic_home
+    private fun setDefault() {
+        replaceFragment(HomeFragment())
+        binding.bnvMain.selectedItemId = R.id.ic_home
     }
 
     private fun setListeners() {
-        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
-            manageBottomNavigation(item.itemId)
-        }
-    }
+        /*binding.bottomNavigation.setOnItemReselectedListener { item ->
+            when (item.itemId) {
+                R.id.ic_list -> {
+                }
 
-    private fun manageBottomNavigation(itemId: Int): Boolean {
-        return when (itemId) {
-            R.id.ic_list -> {
-                replaceFragment(ListFragment())
-                true
+                R.id.ic_home -> {
+                }
+
+                R.id.ic_service -> {
+                }
             }
+        }*/
 
-            R.id.ic_home -> {
-                replaceFragment(HomeFragment())
-                true
+        binding.bnvMain.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.ic_list -> {
+                    replaceFragment(ListFragment())
+                    true
+                }
+
+                R.id.ic_home -> {
+                    replaceFragment(HomeFragment())
+                    true
+                }
+
+                R.id.ic_service -> {
+                    replaceFragment(ServiceFragment())
+                    true
+                }
+
+                else -> false
             }
-
-            R.id.ic_service -> {
-                replaceFragment(ServiceFragment())
-                true
-            }
-
-            else -> false
         }
     }
 
     private fun replaceFragment(fragment: Fragment) {
         val transition = supportFragmentManager.beginTransaction()
-        transition.replace(R.id.frame_layout, fragment)
+        transition.replace(R.id.fl_container, fragment)
         transition.commit()
     }
 }
