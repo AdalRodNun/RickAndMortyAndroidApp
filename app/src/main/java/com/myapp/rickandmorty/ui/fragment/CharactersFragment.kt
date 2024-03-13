@@ -11,16 +11,16 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.myapp.rickandmorty.databinding.FragmentServiceBinding
+import com.myapp.rickandmorty.databinding.FragmentCharactersBinding
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.ui.adapter.CharactersAdapter
 import com.myapp.rickandmorty.ui.viewModel.GetCharactersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ServiceFragment : Fragment() {
+class CharactersFragment : Fragment() {
 
-    private lateinit var binding: FragmentServiceBinding
+    private lateinit var binding: FragmentCharactersBinding
     private lateinit var charactersAdapter: CharactersAdapter
 
     private var charactersList = mutableListOf<CharacterR>()
@@ -31,7 +31,7 @@ class ServiceFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentServiceBinding.inflate(inflater, container, false)
+        binding = FragmentCharactersBinding.inflate(inflater, container, false)
         return binding.root
     }
 

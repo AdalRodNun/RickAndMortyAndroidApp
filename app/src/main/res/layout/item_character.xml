@@ -16,7 +16,7 @@
             android:id="@+id/ivCharacter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="Character image"
+            android:contentDescription="@string/character_image"
             android:src="@drawable/ic_photo" />
     </androidx.cardview.widget.CardView>
 
@@ -35,7 +35,7 @@
             android:ellipsize="end"
             android:gravity="bottom"
             android:maxLines="1"
-            android:text="Rick Sanchez"
+            android:text="@string/item_name_example"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -44,9 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Human - Alive" />
+            android:text="@string/item_description_example" />
 
     </LinearLayout>
-
 
 </LinearLayout>

@@ -7,7 +7,7 @@ import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.ActivityContainerBinding
 import com.myapp.rickandmorty.ui.fragment.HomeFragment
 import com.myapp.rickandmorty.ui.fragment.ListFragment
-import com.myapp.rickandmorty.ui.fragment.ServiceFragment
+import com.myapp.rickandmorty.ui.fragment.CharactersFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -61,7 +61,7 @@ class ContainerActivity : AppCompatActivity() {
                 }
 
                 R.id.ic_service -> {
-                    replaceFragment(ServiceFragment())
+                    replaceFragment(CharactersFragment())
                     true
                 }
 

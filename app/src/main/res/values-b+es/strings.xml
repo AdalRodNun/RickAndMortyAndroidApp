@@ -29,13 +29,19 @@
     <string name="optional">Opcional</string>
     <string name="add_people">Añadir persona</string>
 
-    <!--Fragment Service-->
+    <!--Fragment Characters-->
     <string name="search">Buscar</string>
     <string name="camera_icon">Icono de cámara</string>
     <string name="register_new_account">Registrar nueva cuenta</string>
+    <string name="search_character">Buscar personaje</string>
 
     <!--Container Menu-->
     <string name="online_menu">Personajes en línea</string>
     <string name="my_menu">Mis personajes</string>
     <string name="home_menu">Menú principal</string>
+
+    <!--Character Item-->
+    <string name="character_image">Character image</string>
+    <string name="item_name_example">Rick Sanchez</string>
+    <string name="item_description_example">Human - Alive</string>
 </resources>
