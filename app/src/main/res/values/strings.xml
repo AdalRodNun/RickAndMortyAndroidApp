@@ -29,9 +29,21 @@
     <string name="optional">Optional</string>
     <string name="add_people">Add people</string>
 
-    <!--Fragment Service-->
+    <!--Fragment Characters-->
     <string name="search">Search</string>
     <string name="camera_icon">Camera icon</string>
     <string name="register_new_account">Register new account</string>
+    <string name="search_character">Search character</string>
+
+    <!--Container Menu-->
+    <string name="online_menu">Online Characters</string>
+    <string name="my_menu">My Characters</string>
+    <string name="home_menu">Home</string>
+
+    <!--Character Item-->
+    <string name="character_image">Character image</string>
+    <string name="item_name_example">Rick Sanchez</string>
+    <string name="item_description_example">Human</string>
+    <string name="status_indicator">Status indicator</string>
 
 </resources>

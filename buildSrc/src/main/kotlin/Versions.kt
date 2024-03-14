@@ -11,16 +11,19 @@ object Versions {
     const val liveData = "2.5.1"
 
     // Design
-    const val material = "1.9.0"
+    const val material = "1.11.0"
     const val constraintLayout = "2.1.4"
     const val lottie = "3.7.0"
-    const val picasso = "2.71828"
+    const val glide = "4.12.0"
 
     // Dagger Hilt
     const val daggerHilt = "2.44"
 
     // Hashing
     const val jbcrypt = "0.4"
+
+    // Paging3
+    const val paging3 = "3.2.1"
 
     // Test
     const val jUnit = "4.13.2"

@@ -68,4 +68,7 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="alive">#0f9d58</color>
+    <color name="dead">#BA1A1A</color>
+    <color name="unknown">#424940</color>
 </resources>
