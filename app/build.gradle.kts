@@ -62,6 +62,7 @@ dependencies {
     implementation(Libraries.lottie)
     implementation(Libraries.glide)
     kapt(Libraries.glideCompiler)
+    implementation(Libraries.splashScreen)
 
     // Architecture
     implementation(Libraries.activityKtx)

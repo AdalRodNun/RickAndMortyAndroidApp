@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.ActivityLoginBinding
 import com.myapp.rickandmorty.ui.fragment.RegisterFragment
@@ -22,8 +23,9 @@ class LoginActivity : AppCompatActivity() {
     private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
+
+        installSplashScreen()
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)

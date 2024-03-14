@@ -16,6 +16,7 @@ object Libraries {
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    const val splashScreen = "androidx.core:core-splashscreen:${Versions.splashScreen}"
 
     // Dagger Hilt
     const val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"

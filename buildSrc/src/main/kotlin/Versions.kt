@@ -15,6 +15,7 @@ object Versions {
     const val constraintLayout = "2.1.4"
     const val lottie = "3.7.0"
     const val glide = "4.12.0"
+    const val splashScreen = "1.0.1"
 
     // Dagger Hilt
     const val daggerHilt = "2.44"
