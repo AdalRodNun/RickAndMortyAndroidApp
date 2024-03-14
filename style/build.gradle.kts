@@ -40,6 +40,7 @@ dependencies {
 
     // Design
     implementation(Libraries.materialDesign)
+    implementation(Libraries.splashScreen)
 
     // Test
     testImplementation(Libraries.junit)

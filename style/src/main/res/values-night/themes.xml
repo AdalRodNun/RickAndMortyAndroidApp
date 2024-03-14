@@ -2,7 +2,7 @@
 
 <resources>
 
-    <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Theme.AppTheme" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>
@@ -29,5 +29,11 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
+    </style>
+
+    <style name="Theme.SplashTheme" parent="Theme.SplashScreen">
+        <item name="android:windowSplashScreenBackground">@color/md_theme_dark_surface</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_splash_screen_dark</item>
+        <item name="postSplashScreenTheme">@style/Theme.AppTheme</item>
     </style>
 </resources>
