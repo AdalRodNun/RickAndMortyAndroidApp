@@ -13,7 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myapp.rickandmorty.databinding.FragmentCharactersBinding
 import com.myapp.rickandmorty.domain.model.CharacterR
-import com.myapp.rickandmorty.ui.adapter.CharactersAdapter
+import com.myapp.rickandmorty.ui.adapter.CharactersPagingAdapter
 import com.myapp.rickandmorty.ui.viewModel.GetCharactersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,9 +21,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class CharactersFragment : Fragment() {
 
     private lateinit var binding: FragmentCharactersBinding
-    private lateinit var charactersAdapter: CharactersAdapter
+    private lateinit var charactersAdapter: CharactersPagingAdapter
 
-    private var charactersList = mutableListOf<CharacterR>()
+    //private var charactersList = mutableListOf<CharacterR>()
     private val viewModel: GetCharactersViewModel by viewModels()
 
     override fun onCreateView(
@@ -48,8 +48,7 @@ class CharactersFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        charactersAdapter = CharactersAdapter(
-            charactersDataSet = charactersList,
+        charactersAdapter = CharactersPagingAdapter(
             onClickListener = { character -> onItemSelected(character) })
         binding.recylerService.layoutManager = LinearLayoutManager(requireContext())
         binding.recylerService.adapter = charactersAdapter
@@ -59,7 +58,7 @@ class CharactersFragment : Fragment() {
         searchView.editText.setOnEditorActionListener { _, _, _ ->
             val text = searchView.text.toString()
             if (text.isNotEmpty()) viewModel.getCharactersByName(text.lowercase())
-            else viewModel.getCharacters()
+            //else viewModel.getCharacters()
 
             searchBar.setText(text)
             searchView.hide()
@@ -78,8 +77,10 @@ class CharactersFragment : Fragment() {
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         }
 
-        getCharactersResponse.observe(viewLifecycleOwner) { list ->
-            charactersList.clear()
+        getCharactersResponse2.observe(viewLifecycleOwner) { list ->
+            charactersAdapter.submitData(lifecycle, list)
+
+            /*charactersList.clear()
             charactersList.addAll(list)
             charactersAdapter.notifyDataSetChanged()
 
@@ -87,7 +88,7 @@ class CharactersFragment : Fragment() {
                 //TODO EMPTY LIST VIEW
             } else {
 
-            }
+            }*/
         }
     }
 
