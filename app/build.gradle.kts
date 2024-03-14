@@ -73,7 +73,7 @@ dependencies {
     implementation(Libraries.jbcrypt)
 
     // Paging3
-    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation(Libraries.paging3)
 
     // Dagger
     implementation(Libraries.daggerHilt)

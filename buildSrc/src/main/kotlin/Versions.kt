@@ -22,6 +22,9 @@ object Versions {
     // Hashing
     const val jbcrypt = "0.4"
 
+    // Paging3
+    const val paging3 = "3.2.1"
+
     // Test
     const val jUnit = "4.13.2"
     const val jUnitTest = "1.1.5"

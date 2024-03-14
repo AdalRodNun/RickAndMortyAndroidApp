@@ -24,6 +24,9 @@ object Libraries {
     // Hashing
     const val jbcrypt = "org.mindrot:jbcrypt:${Versions.jbcrypt}"
 
+    // Paging3
+    const val paging3 = "androidx.paging:paging-runtime-ktx:${Versions.paging3}"
+
     // Test
     const val junit = "junit:junit:${Versions.jUnit}"
     const val junitTest = "androidx.test.ext:junit:${Versions.jUnitTest}"
