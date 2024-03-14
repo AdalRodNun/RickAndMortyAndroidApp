@@ -1,6 +1,5 @@
 package com.myapp.rickandmorty.ui.fragment
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,12 +9,15 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.myapp.rickandmorty.databinding.FragmentCharactersBinding
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.ui.adapter.CharactersPagingAdapter
 import com.myapp.rickandmorty.ui.viewModel.GetCharactersViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CharactersFragment : Fragment() {
@@ -23,7 +25,6 @@ class CharactersFragment : Fragment() {
     private lateinit var binding: FragmentCharactersBinding
     private lateinit var charactersAdapter: CharactersPagingAdapter
 
-    //private var charactersList = mutableListOf<CharacterR>()
     private val viewModel: GetCharactersViewModel by viewModels()
 
     override fun onCreateView(
@@ -51,7 +52,6 @@ class CharactersFragment : Fragment() {
         charactersAdapter = CharactersPagingAdapter(
             onClickListener = { character -> onItemSelected(character) }
         )
-
         binding.recylerService.layoutManager = LinearLayoutManager(requireContext())
         binding.recylerService.adapter = charactersAdapter
     }
@@ -59,8 +59,9 @@ class CharactersFragment : Fragment() {
     private fun setListeners() = with(binding) {
         searchView.editText.setOnEditorActionListener { _, _, _ ->
             val text = searchView.text.toString()
-            if (text.isNotEmpty()) viewModel.getCharactersByName(text.lowercase())
-            //else viewModel.getCharacters()
+
+            if (text.isNotEmpty()) viewModel.getCharactersList(name = text.lowercase())
+            else viewModel.getCharactersList(name = null)
 
             searchBar.setText(text)
             searchView.hide()
@@ -73,24 +74,17 @@ class CharactersFragment : Fragment() {
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private fun setObservers() = with(viewModel) {
         onError.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         }
 
-        getCharactersResponse2.observe(viewLifecycleOwner) { list ->
-            charactersAdapter.submitData(lifecycle, list)
-
-            /*charactersList.clear()
-            charactersList.addAll(list)
-            charactersAdapter.notifyDataSetChanged()
-
-            if (list.isEmpty()) {
-                //TODO EMPTY LIST VIEW
-            } else {
-
-            }*/
+        lifecycleScope.launch {
+            resultsState.collectLatest {
+                it.collectLatest { pagingData ->
+                    charactersAdapter.submitData(pagingData)
+                }
+            }
         }
     }
 
