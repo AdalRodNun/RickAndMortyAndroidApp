@@ -13,6 +13,9 @@ An ongoing Rick And Morty Kotlin application that loads information from [The Ri
 - [OkHttp](http://square.github.io/okhttp/) - HTTP client that's efficient by default: HTTP/2 support allows all requests to the same host to share a socket
 - [Glide](https://bumptech.github.io/glide/) - Glide is a fast and efficient image loading library for Android
 - Paging3
+- Lottie
+- Splash
+- Dependency mangment
 
 # Architecture
 TODO
