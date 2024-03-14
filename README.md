@@ -4,18 +4,21 @@ An ongoing Rick And Morty Kotlin application that loads information from [The Ri
 
 # Tech stack
 
-- [Dagger-Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - for dependency injection.
-- [Kotlin-DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Used to handle gradle dependencies and config versions
-- [Room](https://developer.android.com/topic/libraries/architecture/room) - Used to create room db and store the data.
-- ViewBinding
-- [Material-Components](https://github.com/material-components/material-components-android) - Material design components like ripple animation, cardView.
-- [Retrofit](https://github.com/square/retrofit) - Used for REST api communication.
-- [OkHttp](http://square.github.io/okhttp/) - HTTP client that's efficient by default: HTTP/2 support allows all requests to the same host to share a socket
-- [Glide](https://bumptech.github.io/glide/) - Glide is a fast and efficient image loading library for Android
-- Paging3
-- Lottie
+- [Kotlin](https://developer.android.com/kotlin) - A modern statically typed programming language used by over 60% of professional Android developers that helps boost productivity, developer satisfaction, and code safety.
+- [Kotlin-DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Used to handle gradle dependencies and config versions.
+- [Viewmodel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Designed to store and manage UI-related data in a lifecycle conscious way.
+- [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - A lifecycle-aware data holder with the observer pattern.
+- [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) - A concurrency design pattern that you can use on Android to simplify code that executes asynchronously.
+- [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Feature that makes it easier to write code that interacts with views.
+- [Material 3 Components](https://m3.material.io/components) - Material Design UI components for Android.
+- [Lottie](https://airbnb.design/lottie/) - Easily add high-quality animation to any native app.
+- [Glide](https://bumptech.github.io/glide/) - A fast and efficient image loading library for Android focused on smooth scrolling.
+- [Dagger-Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Dependency injection library.
+- [Room](https://developer.android.com/topic/libraries/architecture/room) - Used to create room database and store data locally.
+- [Retrofit](https://github.com/square/retrofit) - REST Client for Android.
+- [Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor) - Logs HTTP request and response data.
+- [Paging 3 library](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - The Paging library helps you load and display pages of data from a larger dataset.
 - Splash
-- Dependency mangment
 
 # Architecture
 TODO
