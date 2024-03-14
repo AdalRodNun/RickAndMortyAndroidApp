@@ -49,7 +49,9 @@ class CharactersFragment : Fragment() {
 
     private fun initRecyclerView() {
         charactersAdapter = CharactersPagingAdapter(
-            onClickListener = { character -> onItemSelected(character) })
+            onClickListener = { character -> onItemSelected(character) }
+        )
+
         binding.recylerService.layoutManager = LinearLayoutManager(requireContext())
         binding.recylerService.adapter = charactersAdapter
     }

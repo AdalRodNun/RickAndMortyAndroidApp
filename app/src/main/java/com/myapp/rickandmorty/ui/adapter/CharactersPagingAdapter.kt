@@ -1,11 +1,15 @@
 package com.myapp.rickandmorty.ui.adapter
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.ItemCharacterBinding
 import com.myapp.rickandmorty.domain.model.CharacterR
 
@@ -31,12 +35,25 @@ class CharactersPagingAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun render(character: CharacterR, onClickListener: (CharacterR) -> Unit) = with(binding) {
             tvName.text = character.name
-            tvDescription.text = "${character.species} - ${character.status}"
+            tvDescription.text = character.species
             Glide.with(ivCharacter.context).load(character.image).into(ivCharacter)
+
+            ivStatus.setStatusColor(character.status)
 
             itemView.setOnClickListener {
                 onClickListener(character)
             }
+        }
+
+        private fun ImageView.setStatusColor(status: String?) {
+            val color = when(status) {
+                "Alive" -> ContextCompat.getColor(this.context, R.color.alive)
+                "unknown" -> ContextCompat.getColor(this.context, R.color.unknown)
+                "Dead" -> ContextCompat.getColor(this.context, R.color.dead)
+                else -> ContextCompat.getColor(this.context, R.color.unknown)
+            }
+
+            this.imageTintList = ColorStateList.valueOf(color)
         }
     }
 
@@ -49,7 +66,6 @@ class CharactersPagingAdapter(
             override fun areContentsTheSame(oldItem: CharacterR, newItem: CharacterR): Boolean {
                 return oldItem == newItem
             }
-
         }
     }
 

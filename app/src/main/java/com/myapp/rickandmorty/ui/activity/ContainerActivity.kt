@@ -2,6 +2,7 @@ package com.myapp.rickandmorty.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.ActivityContainerBinding
@@ -27,6 +28,8 @@ class ContainerActivity : AppCompatActivity() {
     private fun init() {
         setDefault()
         setListeners()
+        ContextCompat.getColor(this, R.color.alive)
+
     }
 
     private fun setDefault() {
