@@ -4,39 +4,44 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import androidx.paging.liveData
-import com.myapp.rickandmorty.core.retrofit.ApiResponse
 import com.myapp.rickandmorty.domain.model.CharacterR
-import com.myapp.rickandmorty.domain.model.toDomain
-import com.myapp.rickandmorty.domain.useCase.GetCharactersByName
-import com.myapp.rickandmorty.domain.useCase.GetCharacters
-import com.myapp.rickandmorty.service.RickAndMortyPagingDataSource
+import com.myapp.rickandmorty.domain.useCase.GetAllCharacters
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class GetCharactersViewModel @Inject constructor(
-    private val getCharacters: GetCharacters,
-    private val getCharacterByName: GetCharactersByName,
-    private val rickAndMortyPagingDataSource: RickAndMortyPagingDataSource
+    private val getAllCharacters: GetAllCharacters
 ) : ViewModel() {
 
     private val _onError = MutableLiveData<String>()
     val onError: LiveData<String> get() = _onError
 
-    private val _getCharactersResponse = MutableLiveData<List<CharacterR>>()
-    val getCharactersResponse: LiveData<List<CharacterR>> get() = _getCharactersResponse
-
-    val getCharactersResponse2 = Pager(PagingConfig(pageSize = 20)) {
-            rickAndMortyPagingDataSource
-        }.liveData.cachedIn(viewModelScope)
-
+    private val _resultState = MutableStateFlow<Flow<PagingData<CharacterR>>>(
+        value = flowOf(PagingData.empty())
+    )
+    val resultsState: StateFlow<Flow<PagingData<CharacterR>>> = _resultState
 
     init {
+        getCharactersList(name = null)
+    }
+
+    fun getCharactersList(name: String?) = viewModelScope.launch {
+
+        val pagerFlow = getAllCharacters(characterName = name)
+            .catch {
+
+            }.cachedIn(viewModelScope)
+
+        _resultState.value = pagerFlow
     }
 
     /*fun getCharacters() = viewModelScope.launch {
@@ -51,19 +56,6 @@ class GetCharactersViewModel @Inject constructor(
             }
         }
     }*/
-
-    fun getCharactersByName(name: String) = viewModelScope.launch {
-        when (val response = getCharacterByName(name)) {
-            is ApiResponse.Loading -> {}
-            is ApiResponse.Success -> {
-                _getCharactersResponse.value = response.data?.characters?.map { it.toDomain() }
-            }
-            is ApiResponse.Error -> {
-                setOnError(response.message ?: "ERROR NOT FOUND")
-                _getCharactersResponse.value = emptyList()
-            }
-        }
-    }
 
     private fun setOnError(message: String) = viewModelScope.launch {
         _onError.value = message

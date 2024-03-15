@@ -2,13 +2,12 @@ package com.myapp.rickandmorty.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.ActivityContainerBinding
-import com.myapp.rickandmorty.ui.fragment.HomeFragment
-import com.myapp.rickandmorty.ui.fragment.ListFragment
 import com.myapp.rickandmorty.ui.fragment.CharactersFragment
+import com.myapp.rickandmorty.ui.fragment.EpisodesFragment
+import com.myapp.rickandmorty.ui.fragment.LocationsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,13 +27,11 @@ class ContainerActivity : AppCompatActivity() {
     private fun init() {
         setDefault()
         setListeners()
-        ContextCompat.getColor(this, R.color.alive)
-
     }
 
     private fun setDefault() {
-        replaceFragment(HomeFragment())
-        binding.bnvMain.selectedItemId = R.id.ic_home
+        replaceFragment(CharactersFragment())
+        binding.bnvMain.selectedItemId = R.id.mn_characters
     }
 
     private fun setListeners() {
@@ -53,18 +50,18 @@ class ContainerActivity : AppCompatActivity() {
 
         binding.bnvMain.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.ic_list -> {
-                    replaceFragment(ListFragment())
+                R.id.mn_episodes -> {
+                    replaceFragment(EpisodesFragment())
                     true
                 }
 
-                R.id.ic_home -> {
-                    replaceFragment(HomeFragment())
-                    true
-                }
-
-                R.id.ic_service -> {
+                R.id.mn_characters -> {
                     replaceFragment(CharactersFragment())
+                    true
+                }
+
+                R.id.mn_locations -> {
+                    replaceFragment(LocationsFragment())
                     true
                 }
 

@@ -1,8 +1,8 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -61,6 +61,9 @@ dependencies {
     implementation(Libraries.constraintLayout)
     implementation(Libraries.lottie)
     implementation(Libraries.glide)
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     kapt(Libraries.glideCompiler)
     implementation(Libraries.splashScreen)
 

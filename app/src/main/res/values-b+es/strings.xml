@@ -34,16 +34,21 @@
     <string name="camera_icon">Icono de cámara</string>
     <string name="register_new_account">Registrar nueva cuenta</string>
     <string name="search_character">Buscar personaje</string>
+    <string name="retry">Reintentar</string>
+    <string name="return_to_top">Regresar arriba</string>
 
     <!--Container Menu-->
-    <string name="online_menu">Personajes en línea</string>
-    <string name="my_menu">Mis personajes</string>
-    <string name="home_menu">Menú principal</string>
+    <string name="characters">Personajes</string>
+    <string name="episodes">Episodios</string>
+    <string name="locations">Ubicaciones</string>
 
     <!--Character Item-->
-    <string name="character_image">Character image</string>
+    <string name="character_image">Imangen del personaje</string>
     <string name="item_name_example">Rick Sanchez</string>
-    <string name="item_description_example">Human</string>
     <string name="status_indicator">Indicador de vida</string>
+    <string name="item_description_example">Alive - Human</string>
+    <string name="item_description_param">%s - %s</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
