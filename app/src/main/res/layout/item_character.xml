@@ -47,21 +47,21 @@
             android:orientation="horizontal"
             tools:ignore="UseCompoundDrawables">
 
-            <TextView
-                android:id="@+id/tvDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/item_description_example" />
-
             <ImageView
                 android:id="@+id/ivStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
-                android:layout_marginHorizontal="5dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginEnd="@dimen/margin_4"
+                android:layout_marginTop="6dp"
                 android:contentDescription="@string/status_indicator"
                 android:src="@drawable/shape_circle" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/item_description_example" />
 
         </LinearLayout>
 

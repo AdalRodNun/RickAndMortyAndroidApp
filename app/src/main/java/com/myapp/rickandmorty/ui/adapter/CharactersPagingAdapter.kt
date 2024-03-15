@@ -34,9 +34,13 @@ class CharactersPagingAdapter(
     inner class ViewHolder(private val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun render(character: CharacterR, onClickListener: (CharacterR) -> Unit) = with(binding) {
+            Glide.with(itemView.context).load(character.image).into(ivCharacter)
             tvName.text = character.name
-            tvDescription.text = character.species
-            Glide.with(ivCharacter.context).load(character.image).into(ivCharacter)
+            tvDescription.text = itemView.context.getString(
+                R.string.item_description_param,
+                character.status,
+                character.species
+            )
 
             ivStatus.setStatusColor(character.status)
 
@@ -46,7 +50,7 @@ class CharactersPagingAdapter(
         }
 
         private fun ImageView.setStatusColor(status: String?) {
-            val color = when(status) {
+            val color = when (status) {
                 "Alive" -> ContextCompat.getColor(this.context, R.color.alive)
                 "unknown" -> ContextCompat.getColor(this.context, R.color.unknown)
                 "Dead" -> ContextCompat.getColor(this.context, R.color.dead)

@@ -45,8 +45,9 @@
     <!--Character Item-->
     <string name="character_image">Character image</string>
     <string name="item_name_example">Rick Sanchez</string>
-    <string name="item_description_example">Human</string>
     <string name="status_indicator">Status indicator</string>
+    <string name="item_description_example">Alive - Human</string>
+    <string name="item_description_param">%s - %s</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
