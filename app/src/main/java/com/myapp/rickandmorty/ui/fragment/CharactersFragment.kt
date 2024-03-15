@@ -10,7 +10,9 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.myapp.rickandmorty.databinding.FragmentCharactersBinding
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.ui.adapter.CharactersPagingAdapter
@@ -52,8 +54,11 @@ class CharactersFragment : Fragment() {
         charactersAdapter = CharactersPagingAdapter(
             onClickListener = { character -> onItemSelected(character) }
         )
-        binding.recylerService.layoutManager = LinearLayoutManager(requireContext())
-        binding.recylerService.adapter = charactersAdapter
+        binding.rvCharacters.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvCharacters.adapter = charactersAdapter
+
+        setAdaptersStates()
+        binding.scrollUp.hide()
     }
 
     private fun setListeners() = with(binding) {
@@ -68,10 +73,39 @@ class CharactersFragment : Fragment() {
             false
         }
 
+        btRetry.setOnClickListener {
+            val name = searchBar.text.toString()
+
+            if (name.isNotEmpty()) viewModel.getCharactersList(name = name.lowercase())
+            else viewModel.getCharactersList(name = null)
+        }
+
+        scrollUp.setOnClickListener {
+            rvCharacters.smoothScrollToPosition(0)
+        }
+
         searchView.setOnMenuItemClickListener {
             Log.e("Test", it.toString())
             false
         }
+
+        rvCharacters.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 10 && scrollUp.isShown) {
+                    // desplazamiento hacia abajo
+                    scrollUp.hide()
+                }
+
+                if (dy < -10 && !scrollUp.isShown) {
+                    // desplazamiento hacia arriba
+                    scrollUp.show()
+                }
+
+                if (!recyclerView.canScrollVertically(-1)&& scrollUp.isShown) {
+                    scrollUp.hide()
+                }
+            }
+        })
     }
 
     private fun setObservers() = with(viewModel) {
@@ -83,6 +117,32 @@ class CharactersFragment : Fragment() {
             resultsState.collectLatest {
                 it.collectLatest { pagingData ->
                     charactersAdapter.submitData(pagingData)
+                }
+            }
+        }
+    }
+
+    private fun setAdaptersStates() = with(binding) {
+        charactersAdapter.addLoadStateListener {
+            when (it.refresh) {
+                is LoadState.Loading -> {
+                    btRetry.visibility = View.INVISIBLE
+                    progressBar.visibility = View.VISIBLE
+                    rvCharacters.visibility = View.GONE
+                }
+
+                is LoadState.Error -> {
+                    //val a = it.source.append as? LoadState.Error
+
+                    btRetry.visibility = View.VISIBLE
+                    progressBar.visibility = View.INVISIBLE
+                    rvCharacters.visibility = View.GONE
+                }
+
+                is LoadState.NotLoading -> {
+                    btRetry.visibility = View.GONE
+                    progressBar.visibility = View.GONE
+                    rvCharacters.visibility = View.VISIBLE
                 }
             }
         }

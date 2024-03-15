@@ -34,6 +34,8 @@
     <string name="camera_icon">Camera icon</string>
     <string name="register_new_account">Register new account</string>
     <string name="search_character">Search character</string>
+    <string name="retry">Retry</string>
+    <string name="return_to_top">Return to top</string>
 
     <!--Container Menu-->
     <string name="online_menu">Online Characters</string>
