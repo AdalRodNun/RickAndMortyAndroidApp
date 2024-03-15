@@ -38,14 +38,17 @@
     <string name="return_to_top">Return to top</string>
 
     <!--Container Menu-->
-    <string name="online_menu">Online Characters</string>
-    <string name="my_menu">My Characters</string>
-    <string name="home_menu">Home</string>
+    <string name="characters">Characters</string>
+    <string name="episodes">Episodes</string>
+    <string name="locations">Locations</string>
 
     <!--Character Item-->
     <string name="character_image">Character image</string>
     <string name="item_name_example">Rick Sanchez</string>
     <string name="item_description_example">Human</string>
     <string name="status_indicator">Status indicator</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

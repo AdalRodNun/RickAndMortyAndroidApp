@@ -38,9 +38,9 @@
     <string name="return_to_top">Regresar arriba</string>
 
     <!--Container Menu-->
-    <string name="online_menu">Personajes en línea</string>
-    <string name="my_menu">Mis personajes</string>
-    <string name="home_menu">Menú principal</string>
+    <string name="characters">Characters</string>
+    <string name="episodes">Episodes</string>
+    <string name="locations">Locations</string>
 
     <!--Character Item-->
     <string name="character_image">Character image</string>
@@ -48,4 +48,6 @@
     <string name="item_description_example">Human</string>
     <string name="status_indicator">Indicador de vida</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
