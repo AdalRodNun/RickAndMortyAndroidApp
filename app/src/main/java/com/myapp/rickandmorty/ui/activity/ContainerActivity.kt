@@ -35,19 +35,6 @@ class ContainerActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        /*binding.bottomNavigation.setOnItemReselectedListener { item ->
-            when (item.itemId) {
-                R.id.ic_list -> {
-                }
-
-                R.id.ic_home -> {
-                }
-
-                R.id.ic_service -> {
-                }
-            }
-        }*/
-
         binding.bnvMain.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.mn_episodes -> {

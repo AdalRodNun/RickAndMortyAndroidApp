@@ -12,11 +12,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.myapp.rickandmorty.databinding.FragmentCharactersBinding
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.ui.adapter.CharactersPagingAdapter
 import com.myapp.rickandmorty.ui.viewModel.GetCharactersViewModel
+import com.myapp.rickandmorty.utils.ExtendedFunctions.manageScrollUpButtonView
+import com.myapp.rickandmorty.utils.ExtendedFunctions.setOnSearchListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -62,15 +63,12 @@ class CharactersFragment : Fragment() {
     }
 
     private fun setListeners() = with(binding) {
-        searchView.editText.setOnEditorActionListener { _, _, _ ->
-            val text = searchView.text.toString()
-
-            if (text.isNotEmpty()) viewModel.getCharactersList(name = text.lowercase())
+        searchView.setOnSearchListener { query ->
+            if (query.isNotEmpty()) viewModel.getCharactersList(name = query.lowercase())
             else viewModel.getCharactersList(name = null)
 
-            searchBar.setText(text)
+            searchBar.setText(query)
             searchView.hide()
-            false
         }
 
         btRetry.setOnClickListener {
@@ -89,23 +87,7 @@ class CharactersFragment : Fragment() {
             false
         }
 
-        rvCharacters.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 10 && scrollUp.isShown) {
-                    // desplazamiento hacia abajo
-                    scrollUp.hide()
-                }
-
-                if (dy < -10 && !scrollUp.isShown) {
-                    // desplazamiento hacia arriba
-                    scrollUp.show()
-                }
-
-                if (!recyclerView.canScrollVertically(-1)&& scrollUp.isShown) {
-                    scrollUp.hide()
-                }
-            }
-        })
+        rvCharacters.manageScrollUpButtonView(button = scrollUp)
     }
 
     private fun setObservers() = with(viewModel) {
@@ -132,8 +114,6 @@ class CharactersFragment : Fragment() {
                 }
 
                 is LoadState.Error -> {
-                    //val a = it.source.append as? LoadState.Error
-
                     btRetry.visibility = View.VISIBLE
                     progressBar.visibility = View.INVISIBLE
                     rvCharacters.visibility = View.GONE

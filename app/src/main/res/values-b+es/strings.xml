@@ -13,6 +13,7 @@
     <string name="empty_email_error">Ingrese correo</string>
     <string name="invalid_email_error">Correo invalido</string>
     <string name="empty_password_error">Ingrese contraseña</string>
+    <string name="wrong_password">Contraseña incorrecta</string>
 
     <!--RegisterFragment-->
     <string name="confirm_password">Confirmar contraseña</string>

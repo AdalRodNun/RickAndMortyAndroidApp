@@ -37,6 +37,10 @@ dependencies {
     // Core
     implementation(Libraries.appCompat)
 
+    // Design
+    implementation(Libraries.materialDesign)
+    implementation(Libraries.recyclerView)
+
     // Testing
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)

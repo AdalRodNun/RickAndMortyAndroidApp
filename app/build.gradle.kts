@@ -58,12 +58,8 @@ dependencies {
 
     // Design
     implementation(Libraries.materialDesign)
-    implementation(Libraries.constraintLayout)
     implementation(Libraries.lottie)
     implementation(Libraries.glide)
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     kapt(Libraries.glideCompiler)
     implementation(Libraries.splashScreen)
 
@@ -89,7 +85,7 @@ dependencies {
     androidTestImplementation(Libraries.espressoCore)
 
     // Modules
-    implementation(project(Modules.utilities))
     implementation(project(Modules.core))
     implementation(project(Modules.style))
+    implementation(project(Modules.utilities))
 }

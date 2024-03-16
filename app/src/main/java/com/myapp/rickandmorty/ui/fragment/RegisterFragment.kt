@@ -12,8 +12,8 @@ import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.core.data.User
 import com.myapp.rickandmorty.databinding.FragmentRegisterBinding
 import com.myapp.rickandmorty.ui.viewModel.RegisterViewModel
+import com.myapp.rickandmorty.utils.ExtendedFunctions.addSimpleTextChangedListener
 import com.myapp.rickandmorty.utils.Functions.isValidEmail
-import com.myapp.rickandmorty.utils.SimpleTextWatcher
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -56,24 +56,24 @@ class RegisterFragment : BottomSheetDialogFragment() {
             }
         }
 
-        etName.addTextChangedListener(SimpleTextWatcher {
+        etName.addSimpleTextChangedListener {
             validateEmptyInputs()
-        })
+        }
 
-        etEmail.addTextChangedListener(SimpleTextWatcher {
+        etEmail.addSimpleTextChangedListener {
             validateEmptyInputs()
             tilEmail.error = null
-        })
+        }
 
-        etPassword.addTextChangedListener(SimpleTextWatcher {
+        etPassword.addSimpleTextChangedListener {
             validateEmptyInputs()
             tilPassword.error = null
-        })
+        }
 
-        etConfirmPassword.addTextChangedListener(SimpleTextWatcher {
+        etConfirmPassword.addSimpleTextChangedListener {
             validateEmptyInputs()
             tilConfirmPassword.error = null
-        })
+        }
     }
 
     private fun getObservers() = with(viewModel) {
