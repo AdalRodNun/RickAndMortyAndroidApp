@@ -2,6 +2,22 @@
 
 An ongoing Rick And Morty Kotlin application that loads information from [The Rick and Morty API](https://rickandmortyapi.com/) to display characters from the serie. It has been built with clean architecture, SOLID principles, and MVVM patter to show an approach of some of the best practices in Android Development.
 
+**App features:**
+- Local login
+- List of Rick and Morty characters
+- Search a character
+- Light and Dark theme support
+- English and Spanish support
+
+**TODO:**
+- [ ] Detail of characters
+- [ ] Bookmark character
+- [ ] Search history
+- [ ] Create my characters
+- [ ] List of Rick and Morty episodes
+- [ ] List of Rick and Morty locations
+- [ ] Unit Testing
+
 # Tech stack
 
 - [Kotlin](https://developer.android.com/kotlin) - A modern statically typed programming language used by over 60% of professional Android developers that helps boost productivity, developer satisfaction, and code safety.
@@ -19,18 +35,9 @@ An ongoing Rick And Morty Kotlin application that loads information from [The Ri
 - [Retrofit](https://github.com/square/retrofit) - REST Client for Android.
 - [Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor) - Logs HTTP request and response data.
 - [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - The Paging library helps you load and display pages of data from a larger dataset.
+- [JBCrypt](https://github.com/jeremyh/jBCrypt) - A Java implementation of OpenBSD's Blowfish password hashing code.
 
-# Architecture
-TODO
+# To implement?
 
-Implemented:
-  - Dependency Management
-  - Lottie Animation
-  - Material 3
-  - English and spanish support
-  - Clean architecture
-
-To implement:
-  - Implement work manager
-  - Implement proguard-rules
-  - Skeleton Content Loader
+- Work manager
+- Skeleton Content Loader
