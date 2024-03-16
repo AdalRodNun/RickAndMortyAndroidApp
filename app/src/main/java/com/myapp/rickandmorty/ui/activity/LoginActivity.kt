@@ -10,10 +10,10 @@ import com.myapp.rickandmorty.databinding.ActivityLoginBinding
 import com.myapp.rickandmorty.ui.fragment.RegisterFragment
 import com.myapp.rickandmorty.ui.fragment.RegisterFragment.Companion.TAG
 import com.myapp.rickandmorty.ui.viewModel.LoginViewModel
+import com.myapp.rickandmorty.utils.ExtendedFunctions.addSimpleTextChangedListener
 import com.myapp.rickandmorty.utils.ExtendedFunctions.getPackageInfoCompat
 import com.myapp.rickandmorty.utils.ExtendedFunctions.goActivity
 import com.myapp.rickandmorty.utils.Functions.isValidEmail
-import com.myapp.rickandmorty.utils.SimpleTextWatcher
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -60,13 +60,13 @@ class LoginActivity : AppCompatActivity() {
             RegisterFragment().show(supportFragmentManager, TAG)
         }
 
-        etEmail.addTextChangedListener(SimpleTextWatcher {
+        etEmail.addSimpleTextChangedListener {
             tilEmail.error = null
-        })
+        }
 
-        etPassword.addTextChangedListener(SimpleTextWatcher {
+        etPassword.addSimpleTextChangedListener {
             tilPassword.error = null
-        })
+        }
     }
 
     private fun getObservers() = with(viewModel) {
