@@ -6,7 +6,13 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.search.SearchView
+import com.google.android.material.textfield.TextInputEditText
 
 object ExtendedFunctions {
 
@@ -20,7 +26,7 @@ object ExtendedFunctions {
     }
 
     /**
-     * This function changes activity
+     * This extension changes activity
      */
     fun Activity.goActivity(
         activity: Activity,
@@ -38,7 +44,7 @@ object ExtendedFunctions {
     }
 
     /**
-     * This extensions returns the package info
+     * This extension returns the package info
      */
     fun PackageManager.getPackageInfoCompat(packageName: String): PackageInfo {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -46,5 +52,58 @@ object ExtendedFunctions {
         } else {
             getPackageInfo(packageName, 0)
         }
+    }
+
+    /**
+     * This extension simplifies text watcher implementation on activities and fragments
+     */
+    fun TextInputEditText.addSimpleTextChangedListener(listener: (String?) -> Unit) {
+        this.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                //Implementation not needed
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                listener(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                //Implementation not needed
+            }
+        })
+    }
+
+    /**
+     * This extension simplifies implementation of searchView listener
+     */
+    fun SearchView.setOnSearchListener(listener: (String) -> Unit) {
+        this.editText.setOnEditorActionListener { _, _, _ ->
+            val text = this.text.toString()
+            listener(text)
+            false
+        }
+    }
+
+    /**
+     * This extensions manage the view of scroll up button
+     */
+    fun RecyclerView.manageScrollUpButtonView(button: ExtendedFloatingActionButton) {
+        this.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 10 && button.isShown) {
+                    // going down
+                    button.hide()
+                }
+
+                if (dy < -10 && !button.isShown) {
+                    // going up
+                    button.show()
+                }
+
+                if (!recyclerView.canScrollVertically(-1) && button.isShown) {
+                    button.hide()
+                }
+            }
+        })
     }
 }

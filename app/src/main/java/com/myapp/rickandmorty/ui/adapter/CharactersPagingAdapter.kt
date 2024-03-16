@@ -3,7 +3,6 @@ package com.myapp.rickandmorty.ui.adapter
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -38,26 +37,17 @@ class CharactersPagingAdapter(
             tvName.text = character.name
             tvDescription.text = itemView.context.getString(
                 R.string.item_description_param,
-                character.status,
+                character.status.str,
                 character.species
             )
 
-            ivStatus.setStatusColor(character.status)
+            ivStatus.imageTintList = ColorStateList.valueOf(
+                ContextCompat.getColor(itemView.context, character.status.color)
+            )
 
             itemView.setOnClickListener {
                 onClickListener(character)
             }
-        }
-
-        private fun ImageView.setStatusColor(status: String?) {
-            val color = when (status) {
-                "Alive" -> ContextCompat.getColor(this.context, R.color.alive)
-                "unknown" -> ContextCompat.getColor(this.context, R.color.unknown)
-                "Dead" -> ContextCompat.getColor(this.context, R.color.dead)
-                else -> ContextCompat.getColor(this.context, R.color.unknown)
-            }
-
-            this.imageTintList = ColorStateList.valueOf(color)
         }
     }
 

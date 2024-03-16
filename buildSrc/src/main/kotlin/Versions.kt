@@ -12,7 +12,7 @@ object Versions {
 
     // Design
     const val material = "1.11.0"
-    const val constraintLayout = "2.1.4"
+    const val recyclerView = "1.3.2"
     const val lottie = "3.7.0"
     const val glide = "4.12.0"
     const val splashScreen = "1.0.1"

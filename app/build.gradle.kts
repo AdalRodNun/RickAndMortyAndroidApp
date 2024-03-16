@@ -58,7 +58,6 @@ dependencies {
 
     // Design
     implementation(Libraries.materialDesign)
-    implementation(Libraries.constraintLayout)
     implementation(Libraries.lottie)
     implementation(Libraries.glide)
     kapt(Libraries.glideCompiler)

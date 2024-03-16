@@ -1,13 +1,15 @@
 package com.myapp.rickandmorty.domain.model
 
 import com.myapp.rickandmorty.core.room.entities.CharacterEntity
+import com.myapp.rickandmorty.data.enums.StatusEnum
+import com.myapp.rickandmorty.data.enums.StatusEnum.Companion.toEnum
 import com.myapp.rickandmorty.data.model.CharacterModel
 import java.util.UUID
 
 data class CharacterR(
     val id: Int?,
     val name: String?,
-    val status: String?,
+    val status: StatusEnum,
     val species: String?,
     val gender: String?,
     val origin: String?,
@@ -20,7 +22,7 @@ data class CharacterR(
 fun CharacterModel.toDomain() = CharacterR(
     id = id,
     name = name,
-    status = status,
+    status = status.toEnum(),
     species = species,
     gender = gender,
     origin = origin?.name,
@@ -33,7 +35,7 @@ fun CharacterModel.toDomain() = CharacterR(
 fun CharacterEntity.toDomain() = CharacterR(
     id = id.toInt(),
     name = name,
-    status = status,
+    status = status.toEnum(),
     species = species,
     gender = gender,
     origin = origin,
@@ -46,7 +48,7 @@ fun CharacterEntity.toDomain() = CharacterR(
 fun CharacterR.toEntity(userUUID: UUID) = CharacterEntity(
     userUUID = userUUID,
     name = name,
-    status = status,
+    status = status.str,
     species = species,
     gender = gender,
     origin = origin,
