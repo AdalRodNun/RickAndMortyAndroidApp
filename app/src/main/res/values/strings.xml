@@ -13,6 +13,7 @@
     <string name="empty_email_error">Email is empty</string>
     <string name="invalid_email_error">Email is invalid</string>
     <string name="empty_password_error">Password is empty</string>
+    <string name="wrong_password">Wrong password</string>
 
     <!--Register-->
     <string name="confirm_password">Confirm password</string>

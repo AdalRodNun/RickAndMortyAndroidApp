@@ -1,14 +1,17 @@
 package com.myapp.rickandmorty.core.retrofit
 
-import kotlinx.coroutines.Dispatchers
+import com.myapp.rickandmorty.core.di.IoDispatcher
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import retrofit2.Response
 import javax.inject.Inject
 
-class ApiHandler @Inject constructor(){
+class ApiHandler @Inject constructor(
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+){
     suspend fun <T : Any> handleApi(execute: suspend () -> Response<T>): ApiResponse<T> {
-        return withContext(Dispatchers.IO) {
+        return withContext(ioDispatcher) {
             ApiResponse.Loading<T>()
             try {
                 val response = execute()

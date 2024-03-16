@@ -74,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
             if (it) {
                 goActivity(activity = ContainerActivity(), finishCurrent = true)
             } else {
-                binding.tilPassword.error = "Contraseña incorrecta"
+                binding.tilPassword.error = getString(R.string.wrong_password)
             }
         }
     }

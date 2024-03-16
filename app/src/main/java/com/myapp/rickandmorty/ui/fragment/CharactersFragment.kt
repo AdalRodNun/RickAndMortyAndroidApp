@@ -132,8 +132,6 @@ class CharactersFragment : Fragment() {
                 }
 
                 is LoadState.Error -> {
-                    //val a = it.source.append as? LoadState.Error
-
                     btRetry.visibility = View.VISIBLE
                     progressBar.visibility = View.INVISIBLE
                     rvCharacters.visibility = View.GONE

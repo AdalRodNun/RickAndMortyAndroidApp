@@ -44,7 +44,7 @@ object ExtendedFunctions {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0))
         } else {
-            @Suppress("DEPRECATION") getPackageInfo(packageName, 0)
+            getPackageInfo(packageName, 0)
         }
     }
 }
