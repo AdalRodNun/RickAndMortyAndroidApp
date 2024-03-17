@@ -72,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
     private fun getObservers() = with(viewModel) {
         checked.observe(this@LoginActivity) {
             if (it) {
-                goActivity(activity = ContainerActivity(), finishCurrent = true)
+                goActivity(activity = HomeActivity(), finishCurrent = true)
             } else {
                 binding.tilPassword.error = getString(R.string.wrong_password)
             }

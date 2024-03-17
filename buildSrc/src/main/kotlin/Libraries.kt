@@ -28,10 +28,15 @@ object Libraries {
     // Paging3
     const val paging3 = "androidx.paging:paging-runtime-ktx:${Versions.paging3}"
 
+    // Navigation
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+
     // Test
     const val junit = "junit:junit:${Versions.jUnit}"
     const val junitTest = "androidx.test.ext:junit:${Versions.jUnitTest}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    const val navigationTesting = "androidx.navigation:navigation-testing:${Versions.navigation}"
 
     // Room - DataStore
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
