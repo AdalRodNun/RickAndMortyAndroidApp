@@ -13,6 +13,7 @@ An ongoing Rick And Morty Kotlin application that loads information from [The Ri
 - [ ] Detail of characters
 - [ ] Bookmark character
 - [ ] Search history
+- [ ] Search filters
 - [ ] Create my characters
 - [ ] List of Rick and Morty episodes
 - [ ] List of Rick and Morty locations
@@ -27,6 +28,7 @@ An ongoing Rick And Morty Kotlin application that loads information from [The Ri
 - [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) - A concurrency design pattern that you can use on Android to simplify code that executes asynchronously.
 - [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Feature that makes it easier to write code that interacts with views.
 - [Material 3 Components](https://m3.material.io/components) - Material Design UI components for Android.
+- [Navigation Component](https://developer.android.com/guide/navigation) - Simplifies implementing navigation, while also helping visualize app’s navigation flow.
 - [Lottie](https://airbnb.design/lottie/) - Easily add high-quality animation to any native app.
 - [Glide](https://bumptech.github.io/glide/) - A fast and efficient image loading library for Android focused on smooth scrolling.
 - [Splash Screen](https://developer.android.com/develop/ui/views/launch/splash-screen) - App launches with animation or icon.
