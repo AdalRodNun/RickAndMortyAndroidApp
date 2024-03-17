@@ -18,13 +18,16 @@ object Versions {
     const val splashScreen = "1.0.1"
 
     // Dagger Hilt
-    const val daggerHilt = "2.44"
+    const val daggerHilt = "2.48"
 
     // Hashing
     const val jbcrypt = "0.4"
 
     // Paging3
     const val paging3 = "3.2.1"
+
+    // Navigation
+    const val navigation = "2.7.7"
 
     // Test
     const val jUnit = "4.13.2"
@@ -39,6 +42,6 @@ object Versions {
 
     // Room - DataStore
     const val dataStore = "1.0.0"
-    const val room = "2.5.2"
+    const val room = "2.6.1"
 
 }

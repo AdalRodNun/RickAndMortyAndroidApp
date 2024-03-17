@@ -19,8 +19,8 @@ object ExtendedFunctions {
     /**
      * This extension show toast if not empty
      */
-    fun Context.toast(message: String) {
-        if (message.isNotEmpty()) {
+    fun Context.toast(message: String?) {
+        if (!message.isNullOrEmpty()) {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
     }
@@ -101,6 +101,7 @@ object ExtendedFunctions {
                 }
 
                 if (!recyclerView.canScrollVertically(-1) && button.isShown) {
+                    // being at the top of recycler
                     button.hide()
                 }
             }

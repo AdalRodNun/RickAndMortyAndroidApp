@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -75,14 +76,19 @@ dependencies {
     // Paging3
     implementation(Libraries.paging3)
 
-    // Dagger
+    // Dagger - Hilt
     implementation(Libraries.daggerHilt)
     kapt(Libraries.daggerHiltCompiler)
+
+    // Navigation
+    implementation(Libraries.navigationFragment)
+    implementation(Libraries.navigationUI)
 
     // Test
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitTest)
     androidTestImplementation(Libraries.espressoCore)
+    androidTestImplementation(Libraries.navigationTesting)
 
     // Modules
     implementation(project(Modules.core))

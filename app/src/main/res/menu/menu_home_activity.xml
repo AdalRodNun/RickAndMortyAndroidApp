@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--Para el correcto funcionamiento los items se tienen que llamar igual a como esten en navigation-->
+    <item
+        android:id="@+id/episodesFragment"
+        android:icon="@drawable/ic_episode"
+        android:title="@string/episodes" />
+    <item
+        android:id="@+id/charactersFragment"
+        android:icon="@drawable/ic_character"
+        android:title="@string/characters" />
+    <item
+        android:id="@+id/locationsFragment"
+        android:icon="@drawable/ic_location"
+        android:title="@string/locations" />
+</menu>
