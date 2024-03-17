@@ -19,6 +19,7 @@ object ExtendedFunctions {
     /**
      * This extension show toast if not empty
      */
+    @Suppress("unused")
     fun Context.toast(message: String?) {
         if (!message.isNullOrEmpty()) {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
