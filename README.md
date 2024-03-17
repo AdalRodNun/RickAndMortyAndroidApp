@@ -1,6 +1,6 @@
 # About
 
-An ongoing Rick And Morty Kotlin application that loads information from [The Rick and Morty API](https://rickandmortyapi.com/) to display characters from the serie. It has been built with clean architecture, SOLID principles, and MVVM patter to show an approach of some of the best practices in Android Development.
+An ongoing Rick And Morty Kotlin application that loads information from [The Rick and Morty API](https://rickandmortyapi.com/) to display characters from the serie. It has been built with clean architecture, SOLID principles, and MVVM pattern to show an approach of some of the best practices in Android Development.
 
 **App features:**
 - Local login
