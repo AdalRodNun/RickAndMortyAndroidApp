@@ -5,13 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.myapp.rickandmorty.databinding.FragmentCharacterDetailBinding
+import com.myapp.rickandmorty.domain.model.CharacterR
+import com.myapp.rickandmorty.ui.viewModel.CharacterDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CharacterDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentCharacterDetailBinding
     private val args by navArgs<CharacterDetailFragmentArgs>()
+
+    private val viewModel: CharacterDetailViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,8 +36,39 @@ class CharacterDetailFragment : Fragment() {
     }
 
     private fun init() {
-        val name = args.characterName
+        setListeners()
+        getObservers()
+        getArgument()
+    }
+
+    private fun getArgument() {
         val id = args.characterID
-        binding.tvDummy.text = "$id - $name"
+        viewModel.getCharacterInfo(characterID = id)
+    }
+
+    private fun setListeners() = with(binding) {
+        topAppBar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun getObservers() = with(viewModel) {
+        characterResponse.observe(viewLifecycleOwner) { character ->
+            setInformationToView(character)
+        }
+    }
+
+    private fun setInformationToView(character: CharacterR) = with(binding) {
+        character.apply {
+            Glide.with(requireContext()).load(image).into(ivCharacter)
+            tvStatus.text = status.str
+            tvName.text = name
+            tvSpecies.text = species
+            tvGender.text = gender
+            tvOrigin.text = origin
+            tvLocation.text = location
+            tvEpisodes.text = episodes?.size.toString()
+            topAppBar.title = name
+        }
     }
 }

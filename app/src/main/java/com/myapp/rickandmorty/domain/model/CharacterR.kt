@@ -28,7 +28,7 @@ fun CharacterModel.toDomain() = CharacterR(
     origin = origin?.name,
     location = location?.name,
     image = image,
-    episodes = null,
+    episodes = episodes,
     created = created
 )
 
