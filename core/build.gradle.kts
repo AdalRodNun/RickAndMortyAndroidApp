@@ -37,27 +37,27 @@ android {
 dependencies {
 
     // Core
-    implementation(Libraries.core)
-    implementation(Libraries.appCompat)
+    implementation(Libraries.CORE)
+    implementation(Libraries.APP_COMPAT)
 
     // Room
-    implementation(Libraries.roomKtx)
-    implementation(Libraries.roomRuntime)
-    kapt(Libraries.roomCompiler)
+    implementation(Libraries.ROOM_KTX)
+    implementation(Libraries.ROOM_RUNTIME)
+    kapt(Libraries.ROOM_COMPILER)
 
     // Retrofit
-    implementation(Libraries.loggingInterceptor)
-    implementation(Libraries.retrofit)
-    implementation(Libraries.converterGson)
+    implementation(Libraries.LOGGING_INTERCEPTOR)
+    implementation(Libraries.RETROFIT)
+    implementation(Libraries.CONVERTER_GSON)
 
     // Dagger
-    implementation(Libraries.daggerHilt)
-    kapt(Libraries.daggerHiltCompiler)
+    implementation(Libraries.DAGGER_HILT)
+    kapt(Libraries.DAGGER_HILT_COMPILER)
 
     // Test
-    testImplementation(Libraries.junit)
-    androidTestImplementation(Libraries.junitTest)
-    androidTestImplementation(Libraries.espressoCore)
+    testImplementation(Libraries.JUNIT)
+    androidTestImplementation(Libraries.JUNIT_TEST)
+    androidTestImplementation(Libraries.ESPRESSO_CORE)
 
     // Modules
     implementation(project(Modules.utilities))
