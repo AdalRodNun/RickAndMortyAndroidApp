@@ -72,6 +72,10 @@ class CharactersFragment : Fragment() {
             searchView.hide()
         }
 
+        searchBar.setOnClickListener {
+            if(scrollUp.isShown) scrollUp.hide()
+        }
+
         btRetry.setOnClickListener {
             val name = searchBar.text.toString()
 
