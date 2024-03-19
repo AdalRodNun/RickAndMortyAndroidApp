@@ -8,13 +8,13 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface RickAndMortyService {
-    @GET("/api/character/")
+    @GET("/character/")
     suspend fun getAllCharacters(
         @Query("name") name: String,
         @Query("page") page: Int
     ): Response<CharacterResponse>
 
-    @GET("/api/character/{id}")
+    @GET("/character/{id}")
     suspend fun getCharacterByID(
         @Path("id") id: Int
     ): Response<CharacterModel>
