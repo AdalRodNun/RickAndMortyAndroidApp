@@ -10,7 +10,7 @@ An ongoing Rick And Morty Kotlin application that loads information from [The Ri
 - English and Spanish support
 
 **TODO:**
-- [ ] Detail of characters
+- [X] Detail of characters
 - [ ] Bookmark character
 - [ ] Search history
 - [ ] Search filters
