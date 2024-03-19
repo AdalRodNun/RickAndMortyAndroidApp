@@ -18,7 +18,8 @@
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/search_character" />
+            android:hint="@string/search_character"
+            app:menu="@menu/menu_search_view" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.search.SearchView
@@ -31,10 +32,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin_32"
-            android:textSize="32sp"
+            android:gravity="center_horizontal"
             android:text="To implement"
+            android:textSize="32sp"
             tools:ignore="HardcodedText" />
 
     </com.google.android.material.search.SearchView>
