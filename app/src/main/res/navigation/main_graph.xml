@@ -36,8 +36,5 @@
         <argument
             android:name="characterID"
             app:argType="integer" />
-        <argument
-            android:name="characterName"
-            app:argType="string" />
     </fragment>
 </navigation>

@@ -35,14 +35,15 @@ android {
 dependencies {
 
     // Core
-    implementation(Libraries.appCompat)
+    implementation(Libraries.CORE)
+    implementation(Libraries.APP_COMPAT)
 
     // Design
-    implementation(Libraries.materialDesign)
-    implementation(Libraries.recyclerView)
+    implementation(Libraries.MATERIAL_DESIGN)
+    implementation(Libraries.RECYCLER_VIEW)
 
     // Testing
-    testImplementation(Libraries.junit)
-    androidTestImplementation(Libraries.junitTest)
-    androidTestImplementation(Libraries.espressoCore)
+    testImplementation(Libraries.JUNIT)
+    androidTestImplementation(Libraries.JUNIT_TEST)
+    androidTestImplementation(Libraries.ESPRESSO_CORE)
 }

@@ -44,51 +44,51 @@ android {
 dependencies {
 
     // Room
-    implementation(Libraries.roomRuntime)
-    implementation(Libraries.roomKtx)
+    implementation(Libraries.ROOM_RUNTIME)
+    implementation(Libraries.ROOM_KTX)
 
     // Retrofit
-    implementation(Libraries.loggingInterceptor)
-    implementation(Libraries.retrofit)
-    implementation(Libraries.converterGson)
-    implementation(Libraries.gson)
+    implementation(Libraries.LOGGING_INTERCEPTOR)
+    implementation(Libraries.RETROFIT)
+    implementation(Libraries.CONVERTER_GSON)
+    implementation(Libraries.GSON)
 
     // Core
-    implementation(Libraries.core)
-    implementation(Libraries.appCompat)
+    implementation(Libraries.CORE)
+    implementation(Libraries.APP_COMPAT)
 
     // Design
-    implementation(Libraries.materialDesign)
-    implementation(Libraries.lottie)
-    implementation(Libraries.glide)
-    kapt(Libraries.glideCompiler)
-    implementation(Libraries.splashScreen)
+    implementation(Libraries.MATERIAL_DESIGN)
+    implementation(Libraries.LOTTIE)
+    implementation(Libraries.GLIDE)
+    kapt(Libraries.GLIDE_COMPILER)
+    implementation(Libraries.SPLASH_SCREEN)
 
     // Architecture
-    implementation(Libraries.activityKtx)
-    implementation(Libraries.fragmentKtx)
-    implementation(Libraries.viewModel)
-    implementation(Libraries.liveData)
+    implementation(Libraries.ACTIVITY_KTX)
+    implementation(Libraries.FRAGMENT_KTX)
+    implementation(Libraries.VIEWMODEL)
+    implementation(Libraries.LIVE_DATA)
 
     // Hashing
-    implementation(Libraries.jbcrypt)
+    implementation(Libraries.JBCRYPT)
 
     // Paging3
-    implementation(Libraries.paging3)
+    implementation(Libraries.PAGING3)
 
     // Dagger - Hilt
-    implementation(Libraries.daggerHilt)
-    kapt(Libraries.daggerHiltCompiler)
+    implementation(Libraries.DAGGER_HILT)
+    kapt(Libraries.DAGGER_HILT_COMPILER)
 
     // Navigation
-    implementation(Libraries.navigationFragment)
-    implementation(Libraries.navigationUI)
+    implementation(Libraries.NAVIGATION_FRAGMENT)
+    implementation(Libraries.NAVIGATION_UI)
 
     // Test
-    testImplementation(Libraries.junit)
-    androidTestImplementation(Libraries.junitTest)
-    androidTestImplementation(Libraries.espressoCore)
-    androidTestImplementation(Libraries.navigationTesting)
+    testImplementation(Libraries.JUNIT)
+    androidTestImplementation(Libraries.JUNIT_TEST)
+    androidTestImplementation(Libraries.ESPRESSO_CORE)
+    androidTestImplementation(Libraries.NAVIGATION_TESTING)
 
     // Modules
     implementation(project(Modules.core))

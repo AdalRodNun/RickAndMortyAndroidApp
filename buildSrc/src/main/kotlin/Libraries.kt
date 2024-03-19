@@ -1,53 +1,53 @@
 object Libraries {
 
     // Core
-    const val core = "androidx.core:core-ktx:${Versions.core}"
-    const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
+    const val CORE = "androidx.core:core-ktx:${Versions.CORE}"
+    const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
 
     // Architecture
-    const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtx}"
-    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
-    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModel}"
-    const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.liveData}"
+    const val ACTIVITY_KTX = "androidx.activity:activity-ktx:${Versions.ACTIVITY_KTX}"
+    const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Versions.FRAGMENT_KTX}"
+    const val VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.VIEWMODEL}"
+    const val LIVE_DATA = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LIVE_DATA}"
 
     // Design
-    const val materialDesign = "com.google.android.material:material:${Versions.material}"
-    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
-    const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
-    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
-    const val splashScreen = "androidx.core:core-splashscreen:${Versions.splashScreen}"
+    const val MATERIAL_DESIGN = "com.google.android.material:material:${Versions.MATERIAL}"
+    const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${Versions.RECYCLER_VIEW}"
+    const val LOTTIE = "com.airbnb.android:lottie:${Versions.LOTTIE}"
+    const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
+    const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.GLIDE}"
+    const val SPLASH_SCREEN = "androidx.core:core-splashscreen:${Versions.SPLASH_SCREEN}"
 
     // Dagger Hilt
-    const val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
-    const val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
+    const val DAGGER_HILT = "com.google.dagger:hilt-android:${Versions.DAGGER_HILT}"
+    const val DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.DAGGER_HILT}"
 
     // Hashing
-    const val jbcrypt = "org.mindrot:jbcrypt:${Versions.jbcrypt}"
+    const val JBCRYPT = "org.mindrot:jbcrypt:${Versions.JBCRYPT}"
 
     // Paging3
-    const val paging3 = "androidx.paging:paging-runtime-ktx:${Versions.paging3}"
+    const val PAGING3 = "androidx.paging:paging-runtime-ktx:${Versions.PAGING3}"
 
     // Navigation
-    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
-    const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    const val NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}"
+    const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
 
     // Test
-    const val junit = "junit:junit:${Versions.jUnit}"
-    const val junitTest = "androidx.test.ext:junit:${Versions.jUnitTest}"
-    const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
-    const val navigationTesting = "androidx.navigation:navigation-testing:${Versions.navigation}"
+    const val JUNIT = "junit:junit:${Versions.JUNIT}"
+    const val JUNIT_TEST = "androidx.test.ext:junit:${Versions.JUNIT_TEST}"
+    const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
+    const val NAVIGATION_TESTING = "androidx.navigation:navigation-testing:${Versions.NAVIGATION}"
 
     // Room - DataStore
-    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
-    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
-    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
-    const val dataStore = "androidx.datastore:datastore-preferences:${Versions.dataStore}"
+    const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
+    const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.ROOM}"
+    const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM}"
+    const val DATA_STORE = "androidx.datastore:datastore-preferences:${Versions.DATA_STORE}"
 
     // Retrofit
-    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
-    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val converterGson = "com.squareup.retrofit2:converter-gson:${Versions.converterGson}"
-    const val gson = "com.google.code.gson:gson:${Versions.gson}"
+    const val LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.LOGGING_INTERCEPTOR}"
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
+    const val CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${Versions.CONVERTER_GSON}"
+    const val GSON = "com.google.code.gson:gson:${Versions.GSON}"
 
 }

@@ -1,47 +1,47 @@
 object Versions {
 
     // Core
-    const val core = "1.7.0"
-    const val appCompat = "1.6.1"
+    const val CORE = "1.7.0"
+    const val APP_COMPAT = "1.6.1"
 
     // Architecture
-    const val activityKtx = "1.7.1"
-    const val fragmentKtx = "1.5.5"
-    const val viewModel = "2.5.1"
-    const val liveData = "2.5.1"
+    const val ACTIVITY_KTX = "1.7.1"
+    const val FRAGMENT_KTX = "1.5.5"
+    const val VIEWMODEL = "2.5.1"
+    const val LIVE_DATA = "2.5.1"
 
     // Design
-    const val material = "1.11.0"
-    const val recyclerView = "1.3.2"
-    const val lottie = "3.7.0"
-    const val glide = "4.12.0"
-    const val splashScreen = "1.0.1"
+    const val MATERIAL = "1.11.0"
+    const val RECYCLER_VIEW = "1.3.2"
+    const val LOTTIE = "3.7.0"
+    const val GLIDE = "4.12.0"
+    const val SPLASH_SCREEN = "1.0.1"
 
     // Dagger Hilt
-    const val daggerHilt = "2.48"
+    const val DAGGER_HILT = "2.48"
 
     // Hashing
-    const val jbcrypt = "0.4"
+    const val JBCRYPT = "0.4"
 
     // Paging3
-    const val paging3 = "3.2.1"
+    const val PAGING3 = "3.2.1"
 
     // Navigation
-    const val navigation = "2.7.7"
+    const val NAVIGATION = "2.7.7"
 
     // Test
-    const val jUnit = "4.13.2"
-    const val jUnitTest = "1.1.5"
-    const val espressoCore = "3.5.1"
+    const val JUNIT = "4.13.2"
+    const val JUNIT_TEST = "1.1.5"
+    const val ESPRESSO_CORE = "3.5.1"
 
     // Retrofit
-    const val loggingInterceptor = "4.9.3"
-    const val retrofit = "2.9.0"
-    const val converterGson = "2.9.0"
-    const val gson = "2.8.9"
+    const val LOGGING_INTERCEPTOR = "4.9.3"
+    const val RETROFIT = "2.9.0"
+    const val CONVERTER_GSON = "2.9.0"
+    const val GSON = "2.8.9"
 
     // Room - DataStore
-    const val dataStore = "1.0.0"
-    const val room = "2.6.1"
+    const val DATA_STORE = "1.0.0"
+    const val ROOM = "2.6.1"
 
 }

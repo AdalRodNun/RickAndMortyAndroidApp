@@ -4,6 +4,7 @@ import com.myapp.rickandmorty.core.data.UserUUID
 import com.myapp.rickandmorty.core.retrofit.ApiResponse
 import com.myapp.rickandmorty.core.room.daos.CharacterDao
 import com.myapp.rickandmorty.core.room.entities.CharacterEntity
+import com.myapp.rickandmorty.data.model.CharacterModel
 import com.myapp.rickandmorty.data.model.CharacterResponse
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.domain.model.toDomain
@@ -17,6 +18,10 @@ class CharacterRepository @Inject constructor(
 ) {
     suspend fun getAllCharacters(page: Int, characterName: String?): ApiResponse<CharacterResponse> {
         return api.getAllCharacters(page = page, characterName = characterName)
+    }
+
+    suspend fun getCharacterByID(characterID: Int): ApiResponse<CharacterModel> {
+        return api.getCharacterByID(characterID = characterID)
     }
 
     suspend fun getAllCharactersByUserFromDatabase(): List<CharacterR> {

@@ -72,6 +72,10 @@ class CharactersFragment : Fragment() {
             searchView.hide()
         }
 
+        searchBar.setOnClickListener {
+            if(scrollUp.isShown) scrollUp.hide()
+        }
+
         btRetry.setOnClickListener {
             val name = searchBar.text.toString()
 
@@ -130,16 +134,16 @@ class CharactersFragment : Fragment() {
     }
 
     private fun onItemSelected(character: CharacterR) {
-        findNavController().navigate(CharactersFragmentDirections.actionCharactersFragmentToCharacterDetailFragment(
-            characterName = character.name ?: "",
-            characterID = character.id ?: 0
-        ))
+        findNavController().navigate(
+            CharactersFragmentDirections.actionCharactersFragmentToCharacterDetailFragment(
+                characterID = character.id ?: 0
+            )
+        )
     }
 
     private fun setOnBackPressed() {
         requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
+            viewLifecycleOwner, object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     if (binding.searchView.isShowing) {
                         binding.searchView.hide()
@@ -148,6 +152,7 @@ class CharactersFragment : Fragment() {
                         requireActivity().onBackPressedDispatcher.onBackPressed()
                     }
                 }
-            })
+            }
+        )
     }
 }
