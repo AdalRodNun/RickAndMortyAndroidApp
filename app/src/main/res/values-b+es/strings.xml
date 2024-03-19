@@ -38,10 +38,13 @@
     <string name="retry">Reintentar</string>
     <string name="return_to_top">Regresar arriba</string>
 
-    <!--Container Menu-->
+    <!--Menus-->
     <string name="characters">Personajes</string>
     <string name="episodes">Episodios</string>
     <string name="locations">Ubicaciones</string>
+    <string name="profile">Perfil</string>
+    <string name="search_another">Buscar otro</string>
+    <string name="more">Más</string>
 
     <!--Character Item-->
     <string name="character_image">Imangen del personaje</string>

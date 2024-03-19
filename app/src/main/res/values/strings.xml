@@ -38,10 +38,13 @@
     <string name="retry">Retry</string>
     <string name="return_to_top">Return to top</string>
 
-    <!--Container Menu-->
+    <!--Menus-->
     <string name="characters">Characters</string>
     <string name="episodes">Episodes</string>
     <string name="locations">Locations</string>
+    <string name="profile">Profile</string>
+    <string name="search_another">Search Another</string>
+    <string name="more">More</string>
 
     <!--Character Item-->
     <string name="character_image">Character image</string>

@@ -1,7 +1,6 @@
 package com.myapp.rickandmorty.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,12 +12,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.search.SearchView.TransitionState
+import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.FragmentCharactersBinding
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.ui.adapter.CharactersPagingAdapter
 import com.myapp.rickandmorty.ui.viewModel.GetCharactersViewModel
 import com.myapp.rickandmorty.utils.ExtendedFunctions.manageScrollUpButtonView
 import com.myapp.rickandmorty.utils.ExtendedFunctions.setOnSearchListener
+import com.myapp.rickandmorty.utils.ExtendedFunctions.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -72,8 +74,21 @@ class CharactersFragment : Fragment() {
             searchView.hide()
         }
 
-        searchBar.setOnClickListener {
-            if(scrollUp.isShown) scrollUp.hide()
+        searchBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.mn_profile -> {
+                    requireContext().toast("Profile")
+                    true
+                }
+
+                else -> false
+            }
+        }
+
+        searchView.addTransitionListener { _, _, newState ->
+            if (newState === TransitionState.SHOWING && scrollUp.isShown) {
+                scrollUp.hide()
+            }
         }
 
         btRetry.setOnClickListener {
@@ -85,11 +100,6 @@ class CharactersFragment : Fragment() {
 
         scrollUp.setOnClickListener {
             rvCharacters.smoothScrollToPosition(0)
-        }
-
-        searchView.setOnMenuItemClickListener {
-            Log.e("Test", it.toString())
-            false
         }
 
         rvCharacters.manageScrollUpButtonView(button = scrollUp)

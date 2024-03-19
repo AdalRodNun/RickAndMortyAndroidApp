@@ -1,17 +1,19 @@
 package com.myapp.rickandmorty.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.FragmentCharacterDetailBinding
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.ui.viewModel.CharacterDetailViewModel
+import com.myapp.rickandmorty.utils.ExtendedFunctions.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,6 +52,22 @@ class CharacterDetailFragment : Fragment() {
         topAppBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
+
+        topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.mn_search -> {
+                    findNavController().navigate(R.id.action_characterDetailFragment_to_charactersFragment)
+                    true
+                }
+
+                R.id.mn_more -> {
+                    requireContext().toast("More")
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 
     private fun getObservers() = with(viewModel) {
@@ -68,7 +86,6 @@ class CharacterDetailFragment : Fragment() {
             tvOrigin.text = origin
             tvLocation.text = location
             tvEpisodes.text = episodes?.size.toString()
-            topAppBar.title = name
         }
     }
 }
