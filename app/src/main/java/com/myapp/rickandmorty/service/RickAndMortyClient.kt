@@ -4,6 +4,7 @@ import com.myapp.rickandmorty.core.retrofit.ApiHandler
 import com.myapp.rickandmorty.core.retrofit.ApiResponse
 import com.myapp.rickandmorty.data.model.CharacterModel
 import com.myapp.rickandmorty.data.model.CharacterResponse
+import com.myapp.rickandmorty.data.model.LocationResponse
 import javax.inject.Inject
 
 class RickAndMortyClient @Inject constructor(
@@ -16,5 +17,9 @@ class RickAndMortyClient @Inject constructor(
 
     suspend fun getCharacterByID(characterID: Int): ApiResponse<CharacterModel> {
         return apiHandler.handleApi { api.getCharacterByID(id = characterID) }
+    }
+
+    suspend fun getAllLocations(page: Int, locationName: String?): ApiResponse<LocationResponse> {
+        return apiHandler.handleApi { api.getAllLocations(page = page, name = locationName ?: "") }
     }
 }

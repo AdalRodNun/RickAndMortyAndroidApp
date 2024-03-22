@@ -165,4 +165,9 @@ class CharactersFragment : Fragment() {
             }
         )
     }
+
+    override fun onResume() {
+        super.onResume()
+        binding.searchBar.setText("")
+    }
 }
