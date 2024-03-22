@@ -8,8 +8,8 @@ enum class StatusEnum(val color: Int, val str: String) {
     Unknown(R.color.unknown, "Unknown");
 
     companion object {
-        //fun valueOf(value: String) = StatusEnum.values().find { it.str == value } ?: Unknown
+        //fun valueOf(value: String) = entries.find { it.str == value } ?: Unknown
 
-        fun String?.toEnum() = StatusEnum.values().find { it.name == this } ?: Unknown
+        fun String?.toEnum() = entries.find { it.name == this } ?: Unknown
     }
 }

@@ -1,4 +1,4 @@
-package com.myapp.rickandmorty.service
+package com.myapp.rickandmorty.service.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -6,12 +6,11 @@ import com.myapp.rickandmorty.core.retrofit.ApiResponse
 import com.myapp.rickandmorty.data.repository.CharacterRepository
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.domain.model.toDomain
+import com.myapp.rickandmorty.utils.Constants.STARTING_PAGE_INDEX
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 
-const val STARTING_PAGE_INDEX = 1
-
-class RickAndMortyPagingDataSource @AssistedInject constructor(
+class CharactersDataSource @AssistedInject constructor(
     private val repository: CharacterRepository,
     @Assisted private val nameQuery: String?
 ) : PagingSource<Int, CharacterR>() {
