@@ -16,7 +16,7 @@ An ongoing Rick And Morty Kotlin application that loads information from [The Ri
 - [ ] Search filters
 - [ ] Create my characters
 - [ ] List of Rick and Morty episodes
-- [ ] List of Rick and Morty locations
+- [X] List of Rick and Morty locations
 - [ ] Unit Testing
 
 # Tech stack
