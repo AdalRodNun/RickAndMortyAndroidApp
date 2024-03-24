@@ -30,10 +30,9 @@ class LocationsDataSource @AssistedInject constructor(
                     data = if (response.data?.locations?.isEmpty() == true) emptyList() else response.data?.locations!!.toList()
                         .map { it.toDomain() },
                     prevKey = if (position == STARTING_PAGE_INDEX) null else position - 1,
-                    nextKey = if (response.data?.locations?.isEmpty() == true) null else position + 1
+                    nextKey = if (response.data?.info?.nextPage.isNullOrBlank()) null else position + 1
                 )
             }
-
         }
     }
 }

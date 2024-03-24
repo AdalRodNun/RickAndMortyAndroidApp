@@ -30,10 +30,9 @@ class CharactersDataSource @AssistedInject constructor(
                     data = if (response.data?.characters?.isEmpty() == true) emptyList() else response.data?.characters!!.toList()
                         .map { it.toDomain() },
                     prevKey = if (position == STARTING_PAGE_INDEX) null else position - 1,
-                    nextKey = if (response.data?.characters?.isEmpty() == true) null else position + 1
+                    nextKey = if (response.data?.info?.nextPage.isNullOrBlank()) null else position + 1
                 )
             }
-
         }
     }
 }

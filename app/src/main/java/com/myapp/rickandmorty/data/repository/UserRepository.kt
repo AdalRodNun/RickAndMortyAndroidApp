@@ -9,6 +9,10 @@ class UserRepository @Inject constructor(
     private val userDao: UserDao
 ) {
 
+    suspend fun checkIfUserExist(email: String) : Boolean {
+        return userDao.checkIfUserExist(email)
+    }
+
     suspend fun addUser(user: User) {
         userDao.addUser(user.toEntity())
     }

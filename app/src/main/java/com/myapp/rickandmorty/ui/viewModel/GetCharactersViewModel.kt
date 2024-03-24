@@ -1,18 +1,14 @@
 package com.myapp.rickandmorty.ui.viewModel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.domain.useCase.GetAllCharacters
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,9 +17,6 @@ import javax.inject.Inject
 class GetCharactersViewModel @Inject constructor(
     private val getAllCharacters: GetAllCharacters
 ) : ViewModel() {
-
-    private val _onError = MutableLiveData<String>()
-    val onError: LiveData<String> get() = _onError
 
     private val _resultState = MutableStateFlow<Flow<PagingData<CharacterR>>>(
         value = flowOf(PagingData.empty())
@@ -35,12 +28,7 @@ class GetCharactersViewModel @Inject constructor(
     }
 
     fun getCharactersList(name: String?) = viewModelScope.launch {
-
         val pagerFlow = getAllCharacters(characterName = name)
-            .catch {
-
-            }.cachedIn(viewModelScope)
-
         _resultState.value = pagerFlow
     }
 
@@ -56,8 +44,4 @@ class GetCharactersViewModel @Inject constructor(
             }
         }
     }*/
-
-    private fun setOnError(message: String) = viewModelScope.launch {
-        _onError.value = message
-    }
 }
