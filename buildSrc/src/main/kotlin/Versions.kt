@@ -33,6 +33,7 @@ object Versions {
     const val JUNIT = "4.13.2"
     const val JUNIT_TEST = "1.1.5"
     const val ESPRESSO_CORE = "3.5.1"
+    const val MOCKK = "1.12.2"
 
     // Retrofit
     const val LOGGING_INTERCEPTOR = "4.9.3"

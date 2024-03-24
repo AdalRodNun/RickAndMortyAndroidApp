@@ -5,7 +5,7 @@ import com.myapp.rickandmorty.core.data.UserUUID
 import org.mindrot.jbcrypt.BCrypt
 import javax.inject.Inject
 
-class ValidateUser @Inject constructor(
+class ValidateUserUseCase @Inject constructor(
     private val repository: UserRepository,
     private val userUUID: UserUUID
 ) {
