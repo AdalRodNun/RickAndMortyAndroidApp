@@ -5,19 +5,20 @@ An ongoing Rick And Morty Kotlin application that loads information from [The Ri
 **App features:**
 - Local login
 - List of Rick and Morty characters
+- List of Rick and Morty locations
+- Detail of character
 - Search a character
 - Light and Dark theme support
 - English and Spanish support
 
 **TODO:**
-- [X] Detail of characters
 - [ ] Bookmark character
 - [ ] Search history
 - [ ] Search filters
 - [ ] Create my characters
 - [ ] List of Rick and Morty episodes
-- [X] List of Rick and Morty locations
-- [ ] Unit Testing
+- [X] Unit Testing (Login and register)
+- [ ] Unit Testing (Rest of the App)
 
 # Tech stack
 
@@ -38,6 +39,9 @@ An ongoing Rick And Morty Kotlin application that loads information from [The Ri
 - [Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor) - Logs HTTP request and response data.
 - [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - The Paging library helps you load and display pages of data from a larger dataset.
 - [JBCrypt](https://github.com/jeremyh/jBCrypt) - A Java implementation of OpenBSD's Blowfish password hashing code.
+- [JUnit](https://developer.android.com/training/testing/local-tests) -  A framework used for testing code that runs in the Java virtual machine (JVM).
+- [MockK](https://mockk.io/) - A testing library that supports Kotlin language features and constructs by building proxies for mocked classes.
+- [Truth](https://truth.dev/) - A library for performing more readable assertions in tests.  
 
 # To implement?
 
