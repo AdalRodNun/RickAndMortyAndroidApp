@@ -13,6 +13,7 @@ import com.myapp.rickandmorty.core.data.User
 import com.myapp.rickandmorty.databinding.FragmentRegisterBinding
 import com.myapp.rickandmorty.ui.viewModel.RegisterViewModel
 import com.myapp.rickandmorty.utils.ExtendedFunctions.addSimpleTextChangedListener
+import com.myapp.rickandmorty.utils.ExtendedFunctions.snackBar
 import com.myapp.rickandmorty.utils.Functions.isValidEmail
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -81,6 +82,10 @@ class RegisterFragment : BottomSheetDialogFragment() {
             if (it) {
                 dismiss()
             }
+        }
+
+        message.observe(viewLifecycleOwner) { message ->
+            binding.root.snackBar(message)
         }
     }
 

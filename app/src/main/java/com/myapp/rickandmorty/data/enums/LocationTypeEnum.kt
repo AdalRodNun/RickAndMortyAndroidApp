@@ -1,8 +1,9 @@
 package com.myapp.rickandmorty.data.enums
 
+import androidx.annotation.DrawableRes
 import com.myapp.rickandmorty.style.R
 
-enum class LocationTypeEnum(val icon: Int, val names: ArrayList<String>) {
+enum class LocationTypeEnum(@DrawableRes val icon: Int, val names: ArrayList<String>) {
     Planet(R.drawable.ic_planet, arrayListOf("Planet", "Dwarf planet (Celestial Dwarf)", "Cluster")),
     Place(R.drawable.ic_place, arrayListOf("Spa", "Police Department", "Resort", "Fantasy town", "Customs", "Daycare", "Arcade", "Convention", "Base", "Menagerie", "Artificially generated world", "Acid plant")),
     SpaceStation(R.drawable.ic_station, arrayListOf("Space station", "Death Star", "Spacecraft")),

@@ -12,6 +12,9 @@ interface UserDao {
     @Insert(onConflict = IGNORE)
     suspend fun addUser(user: UserEntity)
 
+    @Query("SELECT COUNT(*) > 0 FROM user WHERE email = :email LIMIT 1")
+    suspend fun checkIfUserExist(email: String): Boolean
+
     @Query("SELECT * FROM user WHERE email = :email LIMIT 1")
     suspend fun getUserByEmail(email: String): UserEntity?
 

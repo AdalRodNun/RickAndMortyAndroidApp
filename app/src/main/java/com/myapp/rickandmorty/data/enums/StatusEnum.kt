@@ -1,8 +1,9 @@
 package com.myapp.rickandmorty.data.enums
 
+import androidx.annotation.ColorRes
 import com.myapp.rickandmorty.R
 
-enum class StatusEnum(val color: Int, val str: String) {
+enum class StatusEnum(@ColorRes val color: Int, val str: String) {
     Alive(R.color.alive, "Alive"),
     Dead(R.color.dead, "Dead"),
     Unknown(R.color.unknown, "Unknown");

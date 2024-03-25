@@ -160,9 +160,4 @@ class LocationsFragment : Fragment() {
             }
         )
     }
-
-    override fun onResume() {
-        super.onResume()
-        binding.searchBar.setText("")
-    }
 }

@@ -8,10 +8,14 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.search.SearchView
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
 object ExtendedFunctions {
@@ -19,10 +23,21 @@ object ExtendedFunctions {
     /**
      * This extension show toast if not empty
      */
-    @Suppress("unused")
     fun Context.toast(message: String?) {
         if (!message.isNullOrEmpty()) {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    /**
+     * This extension show snackBar if not empty
+     */
+    fun View.snackBar(message: String, textBt: String = "Ok", onClick: (() -> Unit)? = null) {
+        if (message.isNotEmpty()) {
+            Snackbar.make(this, message, Snackbar.LENGTH_SHORT)
+                .setAction(textBt) {
+                    onClick?.invoke()
+                }.show()
         }
     }
 
@@ -42,6 +57,19 @@ object ExtendedFunctions {
         if (finishCurrent) {
             finish()
         }
+    }
+
+    /**
+     * This extension gives to a fragment the ability to manage back pressed
+     */
+    fun Fragment.setOnBackPressed(callback: (OnBackPressedCallback) -> Unit) {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    callback(this)
+                }
+            }
+        )
     }
 
     /**

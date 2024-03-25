@@ -37,6 +37,7 @@ object Libraries {
     const val JUNIT_TEST = "androidx.test.ext:junit:${Versions.JUNIT_TEST}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
     const val NAVIGATION_TESTING = "androidx.navigation:navigation-testing:${Versions.NAVIGATION}"
+    const val MOCKK = "io.mockk:mockk:${Versions.MOCKK}"
 
     // Room - DataStore
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"
