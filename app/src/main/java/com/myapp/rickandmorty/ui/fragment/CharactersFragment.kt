@@ -66,7 +66,7 @@ class CharactersFragment : Fragment() {
             footer = LoadingAdapter { charactersAdapter.retry() }
         )
 
-        setAdapterStatesListeners()
+        setAdapterStatesListener()
     }
 
     private fun setListeners() = with(binding) {
@@ -121,14 +121,11 @@ class CharactersFragment : Fragment() {
         }
     }
 
-    private fun setAdapterStatesListeners() = with(binding) {
+    private fun setAdapterStatesListener() = with(binding) {
         charactersAdapter.addLoadStateListener { loadState ->
 
-            //val isEmptyList =
-                loadState.refresh is LoadState.NotLoading && charactersAdapter.itemCount == 0
-            //requireContext().toast(isEmptyList.toString())
-            //Log.e("TEST", charactersAdapter.itemCount.toString())
-            //showEmptyList(isEmptyList)
+            /*val isEmptyList = loadState.refresh is LoadState.NotLoading && charactersAdapter.itemCount == 0
+            showEmptyList(isEmptyList)*/
 
             // Only show the list if refresh succeeds
             rvCharacters.isVisible = loadState.source.refresh is LoadState.NotLoading
@@ -146,12 +143,6 @@ class CharactersFragment : Fragment() {
             )
         )
     }
-
-    //private fun showEmptyList(isEmptyList: Boolean) {
-        /*if(isEmptyList) {
-            binding.viewEmptyState.visibility = View.VISIBLE
-        }*/
-    //}
 
     private fun setOnBackPressed() {
         this.setOnBackPressed {

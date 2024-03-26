@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.search.SearchBar
-            android:id="@+id/search_bar"
+            android:id="@+id/searchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/search_character"
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="@string/search_character"
-        app:layout_anchor="@id/search_bar">
+        app:layout_anchor="@id/searchBar">
 
         <TextView
             android:layout_width="match_parent"
@@ -72,6 +72,7 @@
         android:layout_margin="16dp"
         android:contentDescription="@string/return_to_top"
         android:text="@string/return_to_top"
+        android:visibility="gone"
         app:icon="@drawable/ic_up" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

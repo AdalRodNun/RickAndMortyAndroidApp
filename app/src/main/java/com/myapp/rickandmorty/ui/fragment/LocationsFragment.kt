@@ -4,8 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -15,9 +14,11 @@ import com.google.android.material.search.SearchView
 import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.FragmentLocationsBinding
 import com.myapp.rickandmorty.domain.model.LocationR
+import com.myapp.rickandmorty.ui.adapter.LoadingAdapter
 import com.myapp.rickandmorty.ui.adapter.LocationsPagingAdapter
 import com.myapp.rickandmorty.ui.viewModel.GetLocationsViewModel
 import com.myapp.rickandmorty.utils.ExtendedFunctions.manageScrollUpButtonView
+import com.myapp.rickandmorty.utils.ExtendedFunctions.setOnBackPressed
 import com.myapp.rickandmorty.utils.ExtendedFunctions.setOnSearchListener
 import com.myapp.rickandmorty.utils.ExtendedFunctions.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,10 +59,13 @@ class LocationsFragment : Fragment() {
             onClickListener = { location -> onItemSelected(location) }
         )
         binding.rvCharacters.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvCharacters.adapter = locationsAdapter
 
-        setAdaptersStates()
-        binding.scrollUp.hide()
+        binding.rvCharacters.adapter = locationsAdapter.withLoadStateHeaderAndFooter(
+            header = LoadingAdapter { locationsAdapter.retry() },
+            footer = LoadingAdapter { locationsAdapter.retry() }
+        )
+
+        setAdapterStatesListener()
     }
 
     private fun setListeners() = with(binding) {
@@ -90,12 +94,7 @@ class LocationsFragment : Fragment() {
             }
         }
 
-        btRetry.setOnClickListener {
-            val name = searchBar.text.toString()
-
-            if (name.isNotEmpty()) viewModel.getLocationsList(name = name.lowercase())
-            else viewModel.getLocationsList(name = null)
-        }
+        btRetry.setOnClickListener { locationsAdapter.retry() }
 
         scrollUp.setOnClickListener {
             rvCharacters.smoothScrollToPosition(0)
@@ -105,10 +104,6 @@ class LocationsFragment : Fragment() {
     }
 
     private fun setObservers() = with(viewModel) {
-        onError.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
-        }
-
         lifecycleScope.launch {
             resultsState.collectLatest {
                 it.collectLatest { pagingData ->
@@ -118,27 +113,13 @@ class LocationsFragment : Fragment() {
         }
     }
 
-    private fun setAdaptersStates() = with(binding) {
-        locationsAdapter.addLoadStateListener {
-            when (it.refresh) {
-                is LoadState.Loading -> {
-                    btRetry.visibility = View.INVISIBLE
-                    progressBar.visibility = View.VISIBLE
-                    rvCharacters.visibility = View.GONE
-                }
+    private fun setAdapterStatesListener() = with(binding) {
+        locationsAdapter.addLoadStateListener { loadState ->
+            rvCharacters.isVisible = loadState.source.refresh is LoadState.NotLoading
 
-                is LoadState.Error -> {
-                    btRetry.visibility = View.VISIBLE
-                    progressBar.visibility = View.INVISIBLE
-                    rvCharacters.visibility = View.GONE
-                }
+            progressBar.isVisible = loadState.source.refresh is LoadState.Loading
 
-                is LoadState.NotLoading -> {
-                    btRetry.visibility = View.GONE
-                    progressBar.visibility = View.GONE
-                    rvCharacters.visibility = View.VISIBLE
-                }
-            }
+            btRetry.isVisible = loadState.source.refresh is LoadState.Error
         }
     }
 
@@ -147,17 +128,13 @@ class LocationsFragment : Fragment() {
     }
 
     private fun setOnBackPressed() {
-        requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner, object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    if (binding.searchView.isShowing) {
-                        binding.searchView.hide()
-                    } else {
-                        isEnabled = false
-                        requireActivity().onBackPressedDispatcher.onBackPressed()
-                    }
-                }
+        this.setOnBackPressed {
+            if (binding.searchView.isShowing) {
+                binding.searchView.hide()
+            } else {
+                it.isEnabled = false
+                requireActivity().onBackPressedDispatcher.onBackPressed()
             }
-        )
+        }
     }
 }
