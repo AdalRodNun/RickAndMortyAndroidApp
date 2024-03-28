@@ -25,16 +25,17 @@ class LoadingAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.retryButton.setOnClickListener { retry() }
+            binding.btRetry.setOnClickListener { retry() }
         }
 
         fun render(loadState: LoadState) = with(binding) {
             if (loadState is LoadState.Error) {
-                errorMsg.text = loadState.error.localizedMessage
+                //tvError.text = loadState.error.localizedMessage
+                tvError.text = "No sé pudo obtener la información requerida"
             }
             progressBar.isVisible = loadState is LoadState.Loading
-            retryButton.isVisible = loadState is LoadState.Error
-            errorMsg.isVisible = loadState is LoadState.Error
+            btRetry.isVisible = loadState is LoadState.Error
+            tvError.isVisible = loadState is LoadState.Error
         }
     }
 }

@@ -55,9 +55,14 @@ dependencies {
     kapt(Libraries.DAGGER_HILT_COMPILER)
 
     // Test
+    implementation(Libraries.DUPLICATED_ERROR_HANDLING)
     testImplementation(Libraries.JUNIT)
+
+    // Test Android
+    androidTestImplementation(Libraries.TRUTH)
     androidTestImplementation(Libraries.JUNIT_TEST)
     androidTestImplementation(Libraries.ESPRESSO_CORE)
+    androidTestImplementation(Libraries.CORE_TESTING)
 
     // Modules
     implementation(project(Modules.utilities))

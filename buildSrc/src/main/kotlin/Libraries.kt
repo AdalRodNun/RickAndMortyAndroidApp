@@ -34,10 +34,16 @@ object Libraries {
 
     // Test
     const val JUNIT = "junit:junit:${Versions.JUNIT}"
+    const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_TEST}" // Used for testing liveData
+    const val CORE_TESTING = "androidx.arch.core:core-testing:${Versions.CORE_TESTING}"
+    const val MOCKK = "io.mockk:mockk:${Versions.MOCKK}"
+    const val TRUTH = "com.google.truth:truth:${Versions.TRUTH}"
+    const val DUPLICATED_ERROR_HANDLING = "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"
+
+    // Android Test
     const val JUNIT_TEST = "androidx.test.ext:junit:${Versions.JUNIT_TEST}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
     const val NAVIGATION_TESTING = "androidx.navigation:navigation-testing:${Versions.NAVIGATION}"
-    const val MOCKK = "io.mockk:mockk:${Versions.MOCKK}"
 
     // Room - DataStore
     const val ROOM_KTX = "androidx.room:room-ktx:${Versions.ROOM}"

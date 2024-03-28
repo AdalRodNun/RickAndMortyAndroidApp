@@ -85,9 +85,13 @@ dependencies {
     implementation(Libraries.NAVIGATION_UI)
 
     // Test
-    testImplementation("com.google.truth:truth:1.4.2")
     testImplementation(Libraries.JUNIT)
     testImplementation(Libraries.MOCKK)
+    testImplementation(Libraries.TRUTH)
+    testImplementation(Libraries.COROUTINES_TEST)
+    testImplementation(Libraries.CORE_TESTING)
+
+    // Android Test
     androidTestImplementation(Libraries.JUNIT_TEST)
     androidTestImplementation(Libraries.ESPRESSO_CORE)
     androidTestImplementation(Libraries.NAVIGATION_TESTING)

@@ -31,9 +31,14 @@ object Versions {
 
     // Test
     const val JUNIT = "4.13.2"
+    const val MOCKK = "1.12.2"
+    const val TRUTH = "1.4.2"
+    const val CORE_TESTING = "2.2.0"
+    const val COROUTINES_TEST = "1.6.0"
+
+    // Test Android
     const val JUNIT_TEST = "1.1.5"
     const val ESPRESSO_CORE = "3.5.1"
-    const val MOCKK = "1.12.2"
 
     // Retrofit
     const val LOGGING_INTERCEPTOR = "4.9.3"
