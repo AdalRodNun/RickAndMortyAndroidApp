@@ -3,6 +3,7 @@ package com.myapp.rickandmorty.ui.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.myapp.rickandmorty.domain.model.LocationR
 import com.myapp.rickandmorty.domain.useCase.GetAllLocations
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,7 +29,7 @@ class GetLocationsViewModel @Inject constructor(
     }
 
     fun getLocationsList(name: String?) = viewModelScope.launch {
-        val pagerFlow = getAllLocations(locationName = name)
+        val pagerFlow = getAllLocations(locationName = name).cachedIn(viewModelScope)
         _resultState.value = pagerFlow
     }
 }

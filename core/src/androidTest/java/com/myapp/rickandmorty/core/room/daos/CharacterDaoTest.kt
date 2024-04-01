@@ -9,7 +9,6 @@ import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.myapp.rickandmorty.core.room.RoomDatabase
 import com.myapp.rickandmorty.core.room.entities.CharacterEntity
-import com.myapp.rickandmorty.core.room.entities.UserEntity
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before

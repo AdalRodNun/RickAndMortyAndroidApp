@@ -3,6 +3,7 @@ package com.myapp.rickandmorty.ui.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.domain.useCase.GetAllCharacters
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,7 +29,7 @@ class GetCharactersViewModel @Inject constructor(
     }
 
     fun getCharactersList(name: String?) = viewModelScope.launch {
-        val pagerFlow = getAllCharacters(characterName = name)
+        val pagerFlow = getAllCharacters(characterName = name).cachedIn(viewModelScope)
         _resultState.value = pagerFlow
     }
 
