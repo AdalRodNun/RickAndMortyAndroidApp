@@ -44,6 +44,7 @@ dependencies {
     implementation(Libraries.ROOM_KTX)
     implementation(Libraries.ROOM_RUNTIME)
     kapt(Libraries.ROOM_COMPILER)
+    implementation(Libraries.DATA_STORE)
 
     // Retrofit
     implementation(Libraries.LOGGING_INTERCEPTOR)
@@ -55,7 +56,7 @@ dependencies {
     kapt(Libraries.DAGGER_HILT_COMPILER)
 
     // Test
-    implementation(Libraries.DUPLICATED_ERROR_HANDLING)
+    //implementation(Libraries.DUPLICATED_ERROR_HANDLING)
     testImplementation(Libraries.JUNIT)
 
     // Test Android

@@ -5,6 +5,8 @@ object Constants {
 
     const val ROOM_DATABASE_NAME = "general_database"
 
+    const val DATASTORE_NAME = "general_datastore"
+
     const val PAGING_NUMBER = 20
 
     const val STARTING_PAGE_INDEX = 1

@@ -1,13 +1,13 @@
 package com.myapp.rickandmorty.domain.useCase
 
 import com.myapp.rickandmorty.data.repository.UserRepository
-import com.myapp.rickandmorty.core.data.UserUUID
+import com.myapp.rickandmorty.core.dataStore.DataStoreManager
 import org.mindrot.jbcrypt.BCrypt
 import javax.inject.Inject
 
 class ValidateUserUseCase @Inject constructor(
     private val repository: UserRepository,
-    private val userUUID: UserUUID
+    private val dataStore: DataStoreManager
 ) {
     suspend operator fun invoke(email: String, password: String) = validateUser(email, password)
 
@@ -17,7 +17,7 @@ class ValidateUserUseCase @Inject constructor(
         return if (user == null || !BCrypt.checkpw(passwordToCheck, user.password)) {
             false
         } else {
-            userUUID.setUserUUID(user.uuid)
+            dataStore.saveSessionID(user.uuid)
             true
         }
     }

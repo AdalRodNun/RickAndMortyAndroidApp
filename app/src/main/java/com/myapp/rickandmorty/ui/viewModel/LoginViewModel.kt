@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.myapp.rickandmorty.core.dataStore.DataStoreManager
 import com.myapp.rickandmorty.domain.useCase.ValidateUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -14,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val validateUserUseCase: ValidateUserUseCase
+    private val validateUserUseCase: ValidateUserUseCase,
+    private val dataStore: DataStoreManager
 ): ViewModel() {
 
     private val _checked = MutableLiveData<Boolean>()
@@ -26,7 +28,14 @@ class LoginViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             delay(2000)
-            _isLoading.value = false
+            dataStore.getSessionID().collect {
+                if (it == null) {
+                    _isLoading.value = false
+                } else {
+                    _isLoading.value = false
+                    _checked.value = true
+                }
+            }
         }
     }
 

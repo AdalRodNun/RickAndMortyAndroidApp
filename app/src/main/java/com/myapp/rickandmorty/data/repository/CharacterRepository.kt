@@ -1,6 +1,6 @@
 package com.myapp.rickandmorty.data.repository
 
-import com.myapp.rickandmorty.core.data.UserUUID
+import com.myapp.rickandmorty.core.dataStore.DataStoreManager
 import com.myapp.rickandmorty.core.retrofit.ApiResponse
 import com.myapp.rickandmorty.core.room.daos.CharacterDao
 import com.myapp.rickandmorty.core.room.entities.CharacterEntity
@@ -9,14 +9,18 @@ import com.myapp.rickandmorty.data.model.CharacterResponse
 import com.myapp.rickandmorty.domain.model.CharacterR
 import com.myapp.rickandmorty.domain.model.toDomain
 import com.myapp.rickandmorty.service.RickAndMortyClient
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 class CharacterRepository @Inject constructor(
     private val api: RickAndMortyClient,
     private val characterDao: CharacterDao,
-    private val userUUID: UserUUID,
+    private val dataStore: DataStoreManager,
 ) {
-    suspend fun getAllCharacters(page: Int, characterName: String?): ApiResponse<CharacterResponse> {
+    suspend fun getAllCharacters(
+        page: Int,
+        characterName: String?
+    ): ApiResponse<CharacterResponse> {
         return api.getAllCharacters(page = page, characterName = characterName)
     }
 
@@ -25,7 +29,8 @@ class CharacterRepository @Inject constructor(
     }
 
     suspend fun getAllCharactersByUserFromDatabase(): List<CharacterR> {
-        val response: List<CharacterEntity> = characterDao.getAllCharactersByUserUUID(userUUID.getUserUUID())
+        val response: List<CharacterEntity> =
+            characterDao.getAllCharactersByUserUUID(dataStore.getSessionID().first()!!)
         return response.map { it.toDomain() }
     }
 
