@@ -37,6 +37,8 @@
     <string name="search_character">Buscar personaje</string>
     <string name="retry">Reintentar</string>
     <string name="return_to_top">Regresar arriba</string>
+    <string name="online_characters">Personajes en Línea</string>
+    <string name="my_characters">Mis Personajes</string>
 
     <!--Menus-->
     <string name="characters">Personajes</string>

@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.search.SearchView.TransitionState
+import com.google.android.material.tabs.TabLayout
 import com.myapp.rickandmorty.R
 import com.myapp.rickandmorty.databinding.FragmentCharactersBinding
 import com.myapp.rickandmorty.domain.model.CharacterR
@@ -66,6 +67,8 @@ class CharactersFragment : Fragment() {
             footer = LoadingAdapter { charactersAdapter.retry() }
         )
 
+        rvCharacters.manageScrollUpButtonView(button = btScrollUp)
+
         setAdapterStatesListener()
     }
 
@@ -76,6 +79,12 @@ class CharactersFragment : Fragment() {
 
             searchBar.setText(query)
             searchView.hide()
+        }
+
+        searchView.addTransitionListener { _, _, newState ->
+            if (newState === TransitionState.SHOWING && btScrollUp.isShown) {
+                btScrollUp.hide()
+            }
         }
 
         searchBar.setOnMenuItemClickListener { menuItem ->
@@ -89,26 +98,25 @@ class CharactersFragment : Fragment() {
             }
         }
 
-        searchView.addTransitionListener { _, _, newState ->
-            if (newState === TransitionState.SHOWING && btScrollUp.isShown) {
-                btScrollUp.hide()
-            }
-        }
-
-        /*btRetry.setOnClickListener {
-            val name = searchBar.text.toString()
-
-            if (name.isNotEmpty()) viewModel.getCharactersList(name = name.lowercase())
-            else viewModel.getCharactersList(name = null)
-        }*/
-
         btRetry.setOnClickListener { charactersAdapter.retry() }
 
         btScrollUp.setOnClickListener {
             rvCharacters.smoothScrollToPosition(0)
         }
 
-        rvCharacters.manageScrollUpButtonView(button = btScrollUp)
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                // Handle tab select
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                // Handle tab reselect
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                // Handle tab unselect
+            }
+        })
     }
 
     private fun setObservers() = with(viewModel) {
